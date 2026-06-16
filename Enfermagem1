@@ -133,7 +133,7 @@
                 <p>
                     Solteiro? Casado? Enrolado?<br> Aqui todo mundo sai ganhando um docinho.
                 </p>
-                <a href="https://fantastic-fox-242c33.netlify.app/" class="botao">Ver Produtos!</a>
+                <a href="amor.html" class="botao">Ver Produtos!</a>
             </div>
         </div>
 
@@ -146,7 +146,7 @@
                     Cultura, arte e tradição:<br>
                      a barraca mais charmosa do São João.
                 </p>
-                <a href="https://glittering-rugelach-2ccd22.netlify.app/" class="botao">Ver Artesanatos!</a>
+                <a href="barracadoartesanato.html" class="botao">Ver Artesanatos!</a>
             </div>
         </div>
 
