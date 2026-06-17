@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arraiá da Alegria</title>
+
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family: 'Times New Roman', Times, serif, sans-serif;
+        background-image: url('https://img.freepik.com/fotos-premium/bandeiras-coloridas-e-decoracao-de-baloes-para-a-festa-de-sao-joao-que-acontece-em-junho-no-nordeste-do-brasil_491130-4556.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color:rgb(255, 255, 255);
+    }
+
+    header{
+        text-align:center;
+        padding:40px 20px;
+    }
+
+    header h1{
+        font-size:3rem;
+        color:#ffd700;
+    }
+
+    header p{
+        margin-top:10px;
+    }
+
+    .container{
+        max-width:1200px;
+        margin:auto;
+        padding:30px;
+    }
+
+    .barracas{
+        display:flex;
+        flex-wrap:wrap;
+        gap:25px;
+        justify-content:center;
+    }
+
+    .barraca{
+        width:350px;
+        background:white;
+        color:#333;
+        border-radius:17px;
+        overflow:hidden;
+        box-shadow:0 5px 15px rgba(0,0,0,.3);
+        transition:.3s;
+    }
+
+    .barraca:hover{
+        transform:translateY(-8px);
+    }
+
+    .topo{
+        padding:20px;
+        text-align:center;
+        color:white;
+    }
+
+    .amor{
+        background:#e91e63;
+    }
+
+    .artesanato{
+        background:#ff9800;
+    }
+
+    .barraca h2{
+        margin-bottom:10px;
+    }
+
+    .conteudo{
+        padding:20px;
+    }
+
+    .botao{
+        display:inline-block;
+        margin-top:15px;
+        background:#050fa1;
+        color:white;
+        text-decoration:none;
+        padding:10px 18px;
+        border-radius:8px;
+    }
+
+    .botao:hover{
+        background:#1565c0;
+    }
+
+    footer{
+        text-align:center;
+        padding:25px;
+        margin-top:40px;
+        background:rgba(0,0,0,.2);
+    }
+
+    .tt{
+        text-align:center;
+        padding: 1px 0px;
+        margin: 1px;
+    }
+
+    </style>
+</head>
+<body>
+
+<div class="bandeirinhas"></div>
+
+<header>
+    <h1> SÃO JOÃO DA ENFERMAGEM </h1>
+    <p>Venha conhecer nossas barracas especiais!</p>
+</header>
+
+<div class="container">
+    <div class="barracas">
+
+        <div class="barraca">
+            <div class="topo amor">
+                <h2>💖 Coração do Sertão</h2>
+            </div>
+            <div class="conteudo">
+                <p>
+                    Solteiro? Casado? Enrolado?<br> Aqui todo mundo sai ganhando um docinho.
+                </p>
+                <a href="barraca-do-amor.html" class="botao">Ver Produtos!</a>
+            </div>
+        </div>
+
+        <div class="barraca">
+            <div class="topo artesanato">
+                <h2>🎨 Barraca Encanto Junino</h2>
+            </div>
+            <div class="conteudo">
+                <p>
+                    Cultura, arte e tradição:<br>
+                     a barraca mais charmosa do São João.
+                </p>
+                <a href="barraca-do-artesanato.html" class="botao">Ver Artesanatos!</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+     Festa Junina 2026 • Quadrilha, música e tradição
+     <p>Feito por Pedro Henrique EEEP Enfer 1 e Vitor Eduardo EMF 3ºG</p> 
+</footer>
+
+</body>
+</html>
