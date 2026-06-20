@@ -61,6 +61,19 @@
     </style>
 </head>
 <body>
+
+<button onclick="tocarMusica()">Tocar Música</button>
+
+<audio id="bgMusic" loop>
+    <source src="imagens/magica.mpeg" type="audio/mpeg">
+</audio>
+
+<script>
+function tocarMusica() {
+    document.getElementById("bgMusic").play();
+}
+</script>
+    
     <div class="container">
         <div class="coracao">💘</div>
         <h1>Coração do Sertão</h1>
