@@ -116,6 +116,18 @@
 <body>
 
 <div class="bandeirinhas"></div>
+
+<button onclick="tocarMusica()">Tocar Música</button>
+
+<audio id="bgMusic" loop>
+    <source src="imagens/magica.mpeg" type="audio/mpeg">
+</audio>
+
+<script>
+function tocarMusica() {
+    document.getElementById("bgMusic").play();
+}
+</script>
     
 <header>
     <h1> SÃO JOÃO DA ENFERMAGEM </h1>
