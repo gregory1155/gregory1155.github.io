@@ -3,172 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arraiá da Alegria</title>
-
+    <title>Amor em Buquês 💘</title>
     <style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-    }
-
-    body{
-        font-family: 'Times New Roman', Times, serif, sans-serif;
-        background-image: url('https://img.freepik.com/fotos-premium/bandeiras-coloridas-e-decoracao-de-baloes-para-a-festa-de-sao-joao-que-acontece-em-junho-no-nordeste-do-brasil_491130-4556.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        color:rgb(255, 255, 255);
-    }
-
-    header{
-        text-align:center;
-        padding:40px 20px;
-    }
-
-    header h1{
-        font-size:3rem;
-        color:#ffd700;
-    }
-
-    header p{
-        margin-top:10px;
-    }
-
-    .container{
-        max-width:1200px;
-        margin:auto;
-        padding:30px;
-    }
-
-    .barracas{
-        display:flex;
-        flex-wrap:wrap;
-        gap:25px;
-        justify-content:center;
-    }
-
-    .barraca{
-        width:350px;
-        background:white;
-        color:#333;
-        border-radius:17px;
-        overflow:hidden;
-        box-shadow:0 5px 15px rgba(0,0,0,.3);
-        transition:.3s;
-    }
-
-    .barraca:hover{
-        transform:translateY(-8px);
-    }
-
-    .topo{
-        padding:20px;
-        text-align:center;
-        color:white;
-    }
-
-    .amor{
-        background:#e91e63;
-    }
-
-    .artesanato{
-        background:#ff9800;
-    }
-
-    .barraca h2{
-        margin-bottom:10px;
-    }
-
-    .conteudo{
-        padding:20px;
-    }
-
-    .botao{
-        display:inline-block;
-        margin-top:15px;
-        background:#050fa1;
-        color:white;
-        text-decoration:none;
-        padding:10px 18px;
-        border-radius:8px;
-    }
-
-    .botao:hover{
-        background:#1565c0;
-    }
-
-    footer{
-        text-align:center;
-        padding:25px;
-        margin-top:40px;
-        background:rgba(0,0,0,.2);
-    }
-
-    .tt{
-        text-align:center;
-        padding: 1px 0px;
-        margin: 1px;
-    }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%);
+            padding: 20px;
+            color: #333;
+        }
+        .container { max-width: 900px; margin: auto; }
+        header {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .logo {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        header p { font-size: 1.1em; color: #666; }
+        .whats { color:#E91E63; font-weight:bold; margin-top:10px; font-size:1.2em; }
+        .categoria {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .categoria h2 { 
+            color: #E91E63; 
+            margin-bottom: 15px; 
+            font-size: 1.8em;
+            border-bottom: 3px solid #FCE4EC;
+            padding-bottom: 10px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin: 8px 0;
+            background: #FFF0F5;
+            border-radius: 10px;
+            font-size: 1.1em;
+            flex-wrap: wrap;
+        }
+        .preco { color: #E91E63; font-weight: bold; }
+        .btn-comprar {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 5px;
+            transition: 0.3s;
+        }
+        .btn-comprar:hover { background: #1ebe57; }
+        .opcional {
+            background: #FCE4EC;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+        .btn-whats {
+            display: block;
+            text-align: center;
+            background: #E91E63;
+            color: white;
+            padding: 18px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn-whats:hover { background: #C2185B; }
+        footer { text-align: center; margin-top: 20px; font-size: 0.9em; color: #666; }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="Amor em Buquês" class="logo">
+            <p>Buquês que fazem o coração bater mais forte</p>
+            <p class="whats">📞 WhatsApp: 88 9421-2533</p>
+        </header>
 
-<div class="bandeirinhas"></div>
-
-<button onclick="tocarMusica()">Tocar Música</button>
-
-<audio id="bgMusic" loop>
-    <source src="imagens/magica.mpeg" type="audio/mpeg">
-</audio>
-
-<script>
-function tocarMusica() {
-    document.getElementById("bgMusic").play();
-}
-</script>
-    
-<header>
-    <h1> SÃO JOÃO DA ENFERMAGEM </h1>
-    <p>Venha conhecer nossas barracas especiais!</p>
-</header>
-
-<div class="container">
-    <div class="barracas">
-
-        <div class="barraca">
-            <div class="topo amor">
-                <h2>💖 Coração do Sertão</h2>
+        <!-- ROSAS -->
+        <div class="categoria">
+            <h2>🌹 Buquês de Rosas de Cetim 🌹</h2>
+            <div class="item"><span>1 rosa - <b class="preco">R$ 15,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 1 rosa de cetim - R$15,00 no Amor em Buquês 💘" class="btn-comprar">Comprar</a>
             </div>
-            <div class="conteudo">
-                <p>
-                    Solteiro? Casado? Enrolado?<br> Aqui todo mundo sai ganhando um docinho.
-                </p>
-                <a href="barraca-do-amor.html" class="botao">Ver Produtos!</a>
+            <div class="item"><span>3 rosas - <b class="preco">R$ 35,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 3 rosas de cetim - R$35,00 no Amor em Buquês 💘" class="btn-comprar">Comprar</a>
             </div>
-        </div>
-
-        <div class="barraca">
-            <div class="topo artesanato">
-                <h2>🎨 Barraca Encanto Junino</h2>
+            <div class="item"><span>5 rosas - <b class="preco">R$ 50,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 5 rosas de cetim - R$50,00 no Amor em Buquês 💘" class="btn-comprar">Comprar</a>
             </div>
-            <div class="conteudo">
-                <p>
-                    Cultura, arte e tradição:<br>
-                     a barraca mais charmosa do São João.
-                </p>
-                <a href="barraca-do-artesanato.html" class="botao">Ver Artesanatos!</a>
+            <div class="item"><span>7 rosas - <b class="preco">R$ 65,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 7 rosas de cetim - R$65,00 no Amor em Buquês 💘" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>9 rosas - <b class="preco">R$ 80,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 9 rosas de cetim - R$80,00 no Amor em Buquês 💘" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>12 rosas - <b class="preco">R$ 100,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 12 rosas de cetim - R$100,00 no Amor em Buquês 💘" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>15 rosas - <b class="preco">R$ 125,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 15 rosas de cetim - R$125,00 no Amor em Buquês 💘" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>18 rosas - <b class="preco">R$ 150,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 18 rosas de cetim - R$150,00 no Amor em Buquês 💘" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>24 rosas - <b class="preco">R$ 190,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 24 rosas de cetim - R$190,00 no Amor em Buquês 💘" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>30 rosas - <b class="preco">R$ 240,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 30 rosas de cetim - R$240,00 no Amor em Buquês 💘" class="btn-comprar">Comprar</a>
             </div>
         </div>
 
+        <!-- BORBOLETAS -->
+        <div class="categoria">
+            <h2>🦋 Buquês de Borboletas 🦋</h2>
+            <div class="item"><span>7 borboletas - <b class="preco">R$ 25,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir buquê de 7 borboletas - R$25,00 no Amor em Buquês 🦋" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>10 borboletas - <b class="preco">R$ 35,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir buquê de 10 borboletas - R$35,00 no Amor em Buquês 🦋" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>15 borboletas - <b class="preco">R$ 50,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir buquê de 15 borboletas - R$50,00 no Amor em Buquês 🦋" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>20 borboletas - <b class="preco">R$ 65,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir buquê de 20 borboletas - R$65,00 no Amor em Buquês 🦋" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>25 borboletas - <b class="preco">R$ 80,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir buquê de 25 borboletas - R$80,00 no Amor em Buquês 🦋" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>30 borboletas - <b class="preco">R$ 95,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir buquê de 30 borboletas - R$95,00 no Amor em Buquês 🦋" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>35 borboletas - <b class="preco">R$ 110,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir buquê de 35 borboletas - R$110,00 no Amor em Buquês 🦋" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>40 borboletas - <b class="preco">R$ 125,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir buquê de 40 borboletas - R$125,00 no Amor em Buquês 🦋" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>45 borboletas - <b class="preco">R$ 140,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir buquê de 45 borboletas - R$140,00 no Amor em Buquês 🦋" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>50 borboletas - <b class="preco">R$ 155,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir buquê de 50 borboletas - R$155,00 no Amor em Buquês 🦋" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <!-- GIRASSÓIS -->
+        <div class="categoria">
+            <h2>🌻 Buquês de Girassóis 🌻</h2>
+            <div class="item"><span>1 girassol - <b class="preco">R$ 15,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 1 girassol - R$15,00 no Amor em Buquês 🌻" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>3 girassóis - <b class="preco">R$ 40,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 3 girassóis - R$40,00 no Amor em Buquês 🌻" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>7 girassóis - <b class="preco">R$ 85,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 7 girassóis - R$85,00 no Amor em Buquês 🌻" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>12 girassóis - <b class="preco">R$ 110,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 12 girassóis - R$110,00 no Amor em Buquês 🌻" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>16 girassóis - <b class="preco">R$ 160,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 16 girassóis - R$160,00 no Amor em Buquês 🌻" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>20 girassóis - <b class="preco">R$ 210,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 20 girassóis - R$210,00 no Amor em Buquês 🌻" class="btn-comprar">Comprar</a>
+            </div>
+            <div class="item"><span>25 girassóis - <b class="preco">R$ 260,00</b></span> 
+                <a href="https://wa.me/558894212533?text=Oi! Quero pedir 25 girassóis - R$260,00 no Amor em Buquês 🌻" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <!-- OPCIONAIS -->
+        <div class="categoria">
+            <h2>✨ Adicionais Opcionais ✨</h2>
+            <div class="opcional">
+                <div class="item"><span>Glitter nas rosas de cetim - <b class="preco">+R$ 5,00</b></span></div>
+                <div class="item"><span>Foto Polaroid - <b class="preco">+R$ 2,00 cada</b></span></div>
+                <div class="item"><span>Mini pelúcia - <b class="preco">+R$ 25,00</b></span></div>
+                <div class="item"><span>Luzes de LED no buquê - <b class="preco">+R$ 10,00</b></span></div>
+                <div class="item"><span>Laço feito à mão de cetim - <b class="preco">+R$ 5,00</b></span></div>
+                <div class="item"><span>Chocolate Sonho de Valsa / Ouro Branco - <b class="preco">+R$ 3,00 cada</b></span></div>
+                <div class="item"><span>Cartão personalizado - <b class="preco">+R$ 4,00</b></span></div>
+            </div>
+        </div>
+
+        <a href="https://wa.me/558894212533?text=Oi! Quero fazer um pedido no Amor em Buquês 💘" class="btn-whats">
+            📲 Falar no WhatsApp 88 9421-2533
+        </a>
+
+        <footer>
+            <p>Encomendas pelo WhatsApp | Entrega na festa</p>
+        </footer>
     </div>
-</div>
-
-<footer>
-     Festa Junina 2026 • Quadrilha, música e tradição
-     <p>Feito por Pedro Henrique EEEP Enfer 1 e Vitor Eduardo EMF 3ºG</p> 
-</footer>
-
 </body>
 </html>
