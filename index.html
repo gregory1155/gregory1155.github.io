@@ -1,166 +1,871 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎬 Cinema da Enfermagem 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
+<title>🔮 Baralho Cigano Místico</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at 50% 0%, #43206b 0%, transparent 35%),
+        radial-gradient(circle at 10% 80%, #30134d 0%, transparent 30%),
+        #08040f;
+    color: #f7e8c5;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =========================
+   ESTRELAS
+========================= */
+
+.stars,
+.stars::before,
+.stars::after {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stars {
+    background-image:
+        radial-gradient(circle, #fff 1px, transparent 1px),
+        radial-gradient(circle, #dcbcff 1px, transparent 1px);
+    background-size: 90px 90px, 150px 150px;
+    background-position: 10px 20px, 50px 80px;
+    opacity: .45;
+    animation: starsMove 25s linear infinite;
+}
+
+.stars::before {
+    content: "";
+    background-image:
+        radial-gradient(circle, #fff 1px, transparent 1px);
+    background-size: 180px 180px;
+    animation: starsMove 40s linear infinite reverse;
+    opacity: .5;
+}
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(90px);
+    }
+}
+
+/* =========================
+   LUA
+========================= */
+
+.moon-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 25px;
+}
+
+.moon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #f7e7bd;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    box-shadow:
+        0 0 20px #f7e7bd,
+        0 0 50px rgba(218, 180, 255, .7),
+        0 0 90px rgba(154, 91, 201, .4);
+    animation: moonGlow 3s ease-in-out infinite;
+}
+
+.moon::after {
+    content: "";
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #160b22;
+    position: absolute;
+    left: 25px;
+    top: -10px;
+}
+
+@keyframes moonGlow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow:
+            0 0 20px #f7e7bd,
+            0 0 50px rgba(218,180,255,.5);
     }
 
-    body{
-        font-family: 'Times New Roman', Times, serif, sans-serif;
-        background-image: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.55)), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        color:rgb(255, 255, 255);
+    50% {
+        transform: scale(1.06);
+        box-shadow:
+            0 0 30px #fff1bd,
+            0 0 80px rgba(218,180,255,.8);
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 60px 20px 40px;
+}
+
+header h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    color: #f0cd78;
+    letter-spacing: 3px;
+    text-shadow:
+        0 0 10px #bd80ed,
+        0 0 25px #7b3ea3,
+        0 0 50px rgba(170, 93, 214, .5);
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow:
+            0 0 10px #bd80ed,
+            0 0 25px #7b3ea3;
     }
 
-    header{
-        text-align:center;
-        padding:40px 20px;
+    50% {
+        text-shadow:
+            0 0 20px #e3b7ff,
+            0 0 45px #984ac3;
+    }
+}
+
+header p {
+    margin-top: 15px;
+    color: #d7c7e4;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+}
+
+.ornament {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 500px;
+    margin: 25px auto;
+    color: #dfb95e;
+}
+
+.ornament::before,
+.ornament::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(to right, transparent, #dfb95e);
+}
+
+.ornament::after {
+    background: linear-gradient(to left, transparent, #dfb95e);
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+main {
+    position: relative;
+    z-index: 2;
+    width: min(1100px, 92%);
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin: 25px 0 30px;
+}
+
+.section-title h2 {
+    color: #f0cd78;
+    font-size: 2rem;
+}
+
+.section-title p {
+    color: #bcaec9;
+    margin-top: 8px;
+}
+
+/* =========================
+   CARTAS INTERATIVAS
+========================= */
+
+.cards-area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 22px;
+    margin-bottom: 70px;
+}
+
+.tarot-card {
+    height: 220px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform .8s cubic-bezier(.4,.2,.2,1);
+    transform-style: preserve-3d;
+}
+
+.tarot-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 18px;
+}
+
+/* Frente da carta */
+
+.card-front {
+    background:
+        radial-gradient(circle, rgba(135,71,172,.35), transparent 60%),
+        linear-gradient(145deg, #261238, #0f0718);
+    border: 2px solid #c69b4e;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.5),
+        0 0 15px rgba(194,146,69,.2);
+}
+
+.card-front::before {
+    content: "✦";
+    position: absolute;
+    font-size: 75px;
+    color: #d5a951;
+    opacity: .3;
+}
+
+.card-symbol {
+    position: relative;
+    z-index: 2;
+    font-size: 45px;
+    color: #efd078;
+    text-shadow: 0 0 15px #b96fe1;
+}
+
+/* Verso da carta */
+
+.card-back {
+    transform: rotateY(180deg);
+    background:
+        linear-gradient(145deg, #42205a, #150a21);
+    border: 2px solid #e2bb65;
+    flex-direction: column;
+    box-shadow: 0 0 25px rgba(207,157,72,.25);
+}
+
+.card-back .emoji {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.card-back h3 {
+    color: #f2cf78;
+    margin-bottom: 8px;
+}
+
+.card-back p {
+    color: #d4c5dc;
+    font-size: .9rem;
+    line-height: 1.4;
+}
+
+.tap-text {
+    text-align: center;
+    color: #9f8ba9;
+    margin-top: -45px;
+    margin-bottom: 55px;
+    font-size: .9rem;
+}
+
+/* =========================
+   PREÇOS
+========================= */
+
+.prices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
+
+.price-card {
+    position: relative;
+    background:
+        linear-gradient(145deg,
+        rgba(59,31,80,.94),
+        rgba(17,8,27,.96));
+    border: 1px solid rgba(220,178,87,.55);
+    border-radius: 18px;
+    padding: 28px 22px;
+    text-align: center;
+    overflow: hidden;
+    transition: .35s;
+}
+
+.price-card::before {
+    content: "✦";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #e1bc68;
+    opacity: .6;
+}
+
+.price-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #e5bd62;
+    box-shadow:
+        0 15px 45px rgba(114,54,156,.45),
+        0 0 25px rgba(222,182,91,.2);
+}
+
+.icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.price-card h3 {
+    color: #ecd29b;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.cards-count {
+    color: #bcaecb;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: #f3ca6b;
+}
+
+/* =========================
+   PACOTES
+========================= */
+
+.packages {
+    margin-top: 75px;
+}
+
+.package-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+}
+
+.package {
+    padding: 30px;
+    text-align: center;
+    border-radius: 18px;
+    background:
+        linear-gradient(145deg,
+        rgba(70,34,91,.9),
+        rgba(19,9,30,.95));
+    border: 1px solid #76528d;
+    transition: .3s;
+}
+
+.package:hover {
+    transform: translateY(-5px);
+    border-color: #d5ae58;
+}
+
+.package h3 {
+    color: #f0ce7b;
+    margin-bottom: 12px;
+}
+
+.package p {
+    color: #d0c1db;
+    line-height: 1.6;
+}
+
+.package strong {
+    display: block;
+    margin-top: 15px;
+    color: #fff0c7;
+    font-size: 1.5rem;
+}
+
+/* =========================
+   DESTAQUE
+========================= */
+
+.highlight {
+    margin: 70px auto;
+    padding: 40px 25px;
+    max-width: 750px;
+    text-align: center;
+    border: 1px solid #d5ae58;
+    border-radius: 22px;
+    background:
+        radial-gradient(circle, rgba(117,64,145,.35), transparent 65%),
+        rgba(22,11,32,.9);
+    box-shadow:
+        0 0 35px rgba(125,69,161,.25);
+}
+
+.highlight .symbol {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.highlight h2 {
+    color: #f1cd76;
+    margin-bottom: 12px;
+}
+
+.highlight p {
+    color: #cfc1d8;
+    line-height: 1.8;
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.contact {
+    text-align: center;
+    margin: 50px 0 75px;
+}
+
+.whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #9b6bc4, #603181);
+    border: 1px solid #d6ae5b;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow:
+        0 0 20px rgba(151,89,198,.35);
+    transition: .3s;
+}
+
+.whatsapp:hover {
+    transform: scale(1.06);
+    box-shadow:
+        0 0 35px rgba(190,126,237,.55);
+}
+
+.whatsapp span {
+    font-size: 25px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid rgba(214,169,79,.25);
+    color: #897a95;
+    line-height: 1.8;
+}
+
+/* =========================
+   ANIMAÇÃO DE ENTRADA
+========================= */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding-top: 40px;
     }
 
-    header h1{
-        font-size:3rem;
-        color:#ffd700;
+    header h1 {
+        font-size: 2.5rem;
     }
 
-    header p{
-        margin-top:10px;
+    .cards-area {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 
-    .container{
-        max-width:1200px;
-        margin:auto;
-        padding:30px;
-        display: flex;
-        justify-content: center; /* CENTRALIZA A CAIXINHA */
+    .tarot-card {
+        height: 200px;
     }
 
-    .barracas{
-        display:flex;
-        flex-wrap:wrap;
-        gap:25px;
-        justify-content:center;
+    .prices,
+    .package-container {
+        grid-template-columns: 1fr;
     }
-
-    .barraca{
-        width:350px;
-        background:white;
-        color:#333;
-        border-radius:17px;
-        overflow:hidden;
-        box-shadow:0 5px 15px rgba(0,0,0,.3);
-        transition:.3s;
-        margin: auto; /* garante centralizado */
-    }
-
-    .barraca:hover{
-        transform:translateY(-8px);
-    }
-
-    .topo{
-        padding:20px;
-        text-align:center;
-        color:white;
-    }
-
-    .amor{
-        background:#e91e63;
-    }
-
-    .artesanato{
-        background:#ff9800;
-    }
-
-    .barraca h2{
-        margin-bottom:10px;
-    }
-
-    .conteudo{
-        padding:20px;
-    }
-
-    .botao{
-        display:inline-block;
-        margin-top:15px;
-        background:#050fa1;
-        color:white;
-        text-decoration:none;
-        padding:10px 18px;
-        border-radius:8px;
-    }
-
-    .botao:hover{
-        background:#1565c0;
-    }
-
-    footer{
-        text-align:center;
-        padding:25px;
-        margin-top:40px;
-        background:rgba(0,0,0,.2);
-    }
-
-    .tt{
-        text-align:center;
-        padding: 1px 0px;
-        margin: 1px;
-    }
-
-    </style>
+}
+</style>
 </head>
+
 <body>
 
-<div class="bandeirinhas"></div>
+<div class="stars"></div>
 
-<button onclick="tocarMusica()">Tocar Música</button>
+<header class="fade-in">
 
-<audio id="bgMusic" loop>
-    <source src="imagens/magica.mpeg" type="audio/mpeg">
-</audio>
+    <div class="moon-container">
+        <div class="moon"></div>
+    </div>
 
-<script>
-function tocarMusica() {
-    document.getElementById("bgMusic").play();
-}
-</script>
-    
-<header>
-    <h1> CINEMA DA ENFERMAGEM 1 </h1>
-    <p>Garanta seu ingresso antecipadamente e aproveite o melhor do cinema!</p>
+    <h1>Baralho Cigano</h1>
+
+    <p>✦ Tiragens • Intuição • Orientação ✦</p>
+
+    <div class="ornament">☾ ✦ ☽</div>
+
 </header>
 
-<div class="container">
-    <div class="barracas">
-        <div class="barraca">
-            <div class="topo artesanato">
-                <h2> Cinema & Entretenimento</h2>
-            </div>
-            <div class="conteudo">
-                <p>
-                    venha comprar seu ingresso<br>
-                    e garantir seu lugar no cinema!<br>
-                </p>
-                <a href="ingressos.html" class="botao">Ver Filmes!</a>
+<main>
+
+<!-- CARTAS -->
+<section class="fade-in">
+
+    <div class="section-title">
+        <h2>🔮 Escolha uma carta</h2>
+        <p>Clique nas cartas para revelar uma mensagem</p>
+    </div>
+
+    <div class="cards-area">
+
+        <div class="tarot-card">
+            <div class="card-inner">
+
+                <div class="card-front">
+                    <div class="card-symbol">✦</div>
+                </div>
+
+                <div class="card-back">
+                    <div class="emoji">🌹</div>
+                    <h3>O Amor</h3>
+                    <p>Representa sentimentos, vínculos e conexões.</p>
+                </div>
+
             </div>
         </div>
+
+        <div class="tarot-card">
+            <div class="card-inner">
+
+                <div class="card-front">
+                    <div class="card-symbol">☀️</div>
+                </div>
+
+                <div class="card-back">
+                    <div class="emoji">☀️</div>
+                    <h3>O Sol</h3>
+                    <p>Simboliza clareza, energia e novos caminhos.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="tarot-card">
+            <div class="card-inner">
+
+                <div class="card-front">
+                    <div class="card-symbol">🌙</div>
+                </div>
+
+                <div class="card-back">
+                    <div class="emoji">🌙</div>
+                    <h3>A Lua</h3>
+                    <p>Representa intuição, emoções e mistérios.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="tarot-card">
+            <div class="card-inner">
+
+                <div class="card-front">
+                    <div class="card-symbol">⭐</div>
+                </div>
+
+                <div class="card-back">
+                    <div class="emoji">⭐</div>
+                    <h3>A Estrela</h3>
+                    <p>Simboliza esperança, inspiração e possibilidades.</p>
+                </div>
+
+            </div>
+        </div>
+
     </div>
+
+    <div class="tap-text">
+        ✦ Toque em uma carta para revelar ✦
+    </div>
+
+</section>
+
+
+<!-- PREÇOS -->
+
+<section class="fade-in">
+
+    <div class="section-title">
+        <h2>✨ Tabela de Tiragens</h2>
+        <p>Escolha a leitura que deseja realizar</p>
+    </div>
+
+    <div class="prices">
+
+        <div class="price-card">
+            <div class="icon">🃏</div>
+            <h3>Pergunta Simples</h3>
+            <p class="cards-count">3 cartas</p>
+            <div class="price">R$ 5,00</div>
+        </div>
+
+        <div class="price-card">
+            <div class="icon">🌙</div>
+            <h3>Tiragem Rápida</h3>
+            <p class="cards-count">5 cartas</p>
+            <div class="price">R$ 8,00</div>
+        </div>
+
+        <div class="price-card">
+            <div class="icon">🔮</div>
+            <h3>Tiragem Completa</h3>
+            <p class="cards-count">9 cartas</p>
+            <div class="price">R$ 12,00</div>
+        </div>
+
+        <div class="price-card">
+            <div class="icon">❤️</div>
+            <h3>Amor & Relacionamentos</h3>
+            <p class="cards-count">7 cartas</p>
+            <div class="price">R$ 10,00</div>
+        </div>
+
+        <div class="price-card">
+            <div class="icon">💰</div>
+            <h3>Trabalho & Dinheiro</h3>
+            <p class="cards-count">7 cartas</p>
+            <div class="price">R$ 10,00</div>
+        </div>
+
+        <div class="price-card">
+            <div class="icon">🌟</div>
+            <h3>Tiragem Geral</h3>
+            <p class="cards-count">12 cartas</p>
+            <div class="price">R$ 15,00</div>
+        </div>
+
+        <div class="price-card">
+            <div class="icon">👑</div>
+            <h3>Tiragem Aprofundada</h3>
+            <p class="cards-count">15 cartas</p>
+            <div class="price">R$ 20,00</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PACOTES -->
+
+<section class="packages fade-in">
+
+    <div class="section-title">
+        <h2>🌟 Pacotes Especiais</h2>
+        <p>Mais perguntas em uma única consulta</p>
+    </div>
+
+    <div class="package-container">
+
+        <div class="package">
+            <h3>🔮 2 Perguntas</h3>
+            <p>Duas perguntas à sua escolha.</p>
+            <strong>R$ 8,00</strong>
+        </div>
+
+        <div class="package">
+            <h3>🌙 3 Perguntas</h3>
+            <p>Três perguntas para uma consulta mais completa.</p>
+            <strong>R$ 10,00</strong>
+        </div>
+
+        <div class="package">
+            <h3>🌟 Pacote Completo</h3>
+            <p>5 perguntas + uma tiragem geral.</p>
+            <strong>R$ 20,00</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MENSAGEM -->
+
+<section class="highlight fade-in">
+
+    <div class="symbol">☾ ✦ ☽</div>
+
+    <h2>Permita-se ouvir as cartas</h2>
+
+    <p>
+        Cada tiragem pode ser utilizada como uma forma de reflexão
+        e autoconhecimento. Escolha sua leitura e descubra os
+        significados que as cartas podem trazer para sua jornada.
+    </p>
+
+</section>
+
+
+<!-- WHATSAPP -->
+
+<div class="contact fade-in">
+
+    <!-- TROQUE O NÚMERO ABAIXO PELO SEU -->
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/5500000000000"
+        target="_blank"
+        rel="noopener"
+    >
+        <span>💬</span>
+        AGENDAR MINHA TIRAGEM
+    </a>
+
 </div>
 
+</main>
+
+
 <footer>
-     Cinema 2026 • Filmes, pipoca e diversão
-     <p>Feito por Pedro H.</p> 
+
+    ✦ ☾ Baralho Cigano ☽ ✦
+    <br>
+
+    Leituras para reflexão e entretenimento.
+
 </footer>
 
-</body>
-</html>
+
+<script>
+
+/* =========================
+   CARTAS VIRANDO
+========================= */
+
+const cards = document.querySelectorAll(".tarot-card");
+
+cards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        card.classList.toggle("flipped");
+
+    });
+
+});
+
+
+/* =========================
+   ANIMAÇÃO SUAVE AO ROLAR
+========================= */
+
+const animatedElements =
+    document.querySelectorAll(".fade-in");
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.style.animationPlayState = "running";
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.1
+    }
+);
+
+animatedElements.forEach(element => {
+
+    element.style.animationPlayState = "paused";
+
+    observer.observe(element);
+
+});
+
+</script>
 
 </body>
 </html>
+```
