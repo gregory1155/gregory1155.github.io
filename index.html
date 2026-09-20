@@ -1,11 +1,11 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🔮 Baralho Cigano Místico</title>
+<title>🔮 Baralho Cigano</title>
 
 <style>
 * {
@@ -29,9 +29,7 @@ body {
     overflow-x: hidden;
 }
 
-/* =========================
-   ESTRELAS
-========================= */
+/* ESTRELAS */
 
 .stars,
 .stars::before,
@@ -62,17 +60,11 @@ body {
 }
 
 @keyframes starsMove {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(90px);
-    }
+    from { transform: translateY(0); }
+    to { transform: translateY(90px); }
 }
 
-/* =========================
-   LUA
-========================= */
+/* LUA */
 
 .moon-container {
     position: relative;
@@ -91,8 +83,7 @@ body {
     top: 15px;
     box-shadow:
         0 0 20px #f7e7bd,
-        0 0 50px rgba(218, 180, 255, .7),
-        0 0 90px rgba(154, 91, 201, .4);
+        0 0 50px rgba(218,180,255,.7);
     animation: moonGlow 3s ease-in-out infinite;
 }
 
@@ -108,24 +99,16 @@ body {
 }
 
 @keyframes moonGlow {
-    0%, 100% {
+    0%,100% {
         transform: scale(1);
-        box-shadow:
-            0 0 20px #f7e7bd,
-            0 0 50px rgba(218,180,255,.5);
     }
 
     50% {
         transform: scale(1.06);
-        box-shadow:
-            0 0 30px #fff1bd,
-            0 0 80px rgba(218,180,255,.8);
     }
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header {
     position: relative;
@@ -140,23 +123,7 @@ header h1 {
     letter-spacing: 3px;
     text-shadow:
         0 0 10px #bd80ed,
-        0 0 25px #7b3ea3,
-        0 0 50px rgba(170, 93, 214, .5);
-    animation: titleGlow 3s ease-in-out infinite;
-}
-
-@keyframes titleGlow {
-    0%, 100% {
-        text-shadow:
-            0 0 10px #bd80ed,
-            0 0 25px #7b3ea3;
-    }
-
-    50% {
-        text-shadow:
-            0 0 20px #e3b7ff,
-            0 0 45px #984ac3;
-    }
+        0 0 30px #7b3ea3;
 }
 
 header p {
@@ -187,9 +154,7 @@ header p {
     background: linear-gradient(to left, transparent, #dfb95e);
 }
 
-/* =========================
-   CONTEÚDO
-========================= */
+/* CONTEÚDO */
 
 main {
     position: relative;
@@ -213,9 +178,7 @@ main {
     margin-top: 8px;
 }
 
-/* =========================
-   CARTAS INTERATIVAS
-========================= */
+/* CARTAS */
 
 .cards-area {
     display: grid;
@@ -234,7 +197,7 @@ main {
     width: 100%;
     height: 100%;
     position: relative;
-    transition: transform .8s cubic-bezier(.4,.2,.2,1);
+    transition: transform .8s;
     transform-style: preserve-3d;
 }
 
@@ -256,43 +219,25 @@ main {
     padding: 18px;
 }
 
-/* Frente da carta */
-
 .card-front {
     background:
         radial-gradient(circle, rgba(135,71,172,.35), transparent 60%),
         linear-gradient(145deg, #261238, #0f0718);
     border: 2px solid #c69b4e;
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.5),
-        0 0 15px rgba(194,146,69,.2);
-}
-
-.card-front::before {
-    content: "✦";
-    position: absolute;
-    font-size: 75px;
-    color: #d5a951;
-    opacity: .3;
+    box-shadow: 0 10px 30px rgba(0,0,0,.5);
 }
 
 .card-symbol {
-    position: relative;
-    z-index: 2;
-    font-size: 45px;
+    font-size: 50px;
     color: #efd078;
     text-shadow: 0 0 15px #b96fe1;
 }
 
-/* Verso da carta */
-
 .card-back {
     transform: rotateY(180deg);
-    background:
-        linear-gradient(145deg, #42205a, #150a21);
+    background: linear-gradient(145deg, #42205a, #150a21);
     border: 2px solid #e2bb65;
     flex-direction: column;
-    box-shadow: 0 0 25px rgba(207,157,72,.25);
 }
 
 .card-back .emoji {
@@ -308,20 +253,9 @@ main {
 .card-back p {
     color: #d4c5dc;
     font-size: .9rem;
-    line-height: 1.4;
 }
 
-.tap-text {
-    text-align: center;
-    color: #9f8ba9;
-    margin-top: -45px;
-    margin-bottom: 55px;
-    font-size: .9rem;
-}
-
-/* =========================
-   PREÇOS
-========================= */
+/* PREÇOS */
 
 .prices {
     display: grid;
@@ -339,21 +273,11 @@ main {
     border-radius: 18px;
     padding: 28px 22px;
     text-align: center;
-    overflow: hidden;
     transition: .35s;
 }
 
-.price-card::before {
-    content: "✦";
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    color: #e1bc68;
-    opacity: .6;
-}
-
 .price-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-8px);
     border-color: #e5bd62;
     box-shadow:
         0 15px 45px rgba(114,54,156,.45),
@@ -382,9 +306,29 @@ main {
     color: #f3ca6b;
 }
 
-/* =========================
-   PACOTES
-========================= */
+/* BOTÃO COMPRAR */
+
+.buy-button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 13px 20px;
+    border: 1px solid #e2bd67;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #a56bd0, #5b2b7d);
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.buy-button:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 22px rgba(205,146,241,.6);
+}
+
+/* PACOTES */
 
 .packages {
     margin-top: 75px;
@@ -400,17 +344,8 @@ main {
     padding: 30px;
     text-align: center;
     border-radius: 18px;
-    background:
-        linear-gradient(145deg,
-        rgba(70,34,91,.9),
-        rgba(19,9,30,.95));
+    background: linear-gradient(145deg, #46225b, #13091e);
     border: 1px solid #76528d;
-    transition: .3s;
-}
-
-.package:hover {
-    transform: translateY(-5px);
-    border-color: #d5ae58;
 }
 
 .package h3 {
@@ -430,9 +365,11 @@ main {
     font-size: 1.5rem;
 }
 
-/* =========================
-   DESTAQUE
-========================= */
+.package .buy-button {
+    margin-top: 20px;
+}
+
+/* DESTAQUE */
 
 .highlight {
     margin: 70px auto;
@@ -444,8 +381,6 @@ main {
     background:
         radial-gradient(circle, rgba(117,64,145,.35), transparent 65%),
         rgba(22,11,32,.9);
-    box-shadow:
-        0 0 35px rgba(125,69,161,.25);
 }
 
 .highlight .symbol {
@@ -463,9 +398,7 @@ main {
     line-height: 1.8;
 }
 
-/* =========================
-   WHATSAPP
-========================= */
+/* WHATSAPP */
 
 .contact {
     text-align: center;
@@ -479,29 +412,14 @@ main {
     padding: 16px 35px;
     border-radius: 50px;
     text-decoration: none;
-    color: #fff;
+    color: white;
     background: linear-gradient(135deg, #9b6bc4, #603181);
     border: 1px solid #d6ae5b;
     font-weight: bold;
-    letter-spacing: 1px;
-    box-shadow:
-        0 0 20px rgba(151,89,198,.35);
-    transition: .3s;
+    box-shadow: 0 0 20px rgba(151,89,198,.35);
 }
 
-.whatsapp:hover {
-    transform: scale(1.06);
-    box-shadow:
-        0 0 35px rgba(190,126,237,.55);
-}
-
-.whatsapp span {
-    font-size: 25px;
-}
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
     position: relative;
@@ -514,25 +432,153 @@ footer {
 }
 
 /* =========================
-   ANIMAÇÃO DE ENTRADA
+   CHECKOUT
 ========================= */
 
-.fade-in {
-    opacity: 0;
-    transform: translateY(25px);
-    animation: fadeIn 1s forwards;
+.checkout-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(3,1,7,.82);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    overflow-y: auto;
 }
 
-@keyframes fadeIn {
+.checkout-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkout {
+    width: min(500px, 100%);
+    background:
+        radial-gradient(circle at top, #472268, transparent 45%),
+        #12091b;
+    border: 1px solid #d6ae5b;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow:
+        0 0 40px rgba(177,102,223,.4),
+        0 20px 70px rgba(0,0,0,.7);
+    position: relative;
+    animation: checkoutIn .35s ease;
+}
+
+@keyframes checkoutIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.95);
+    }
+
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
+.close-checkout {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #76528d;
+    background: #21102e;
+    color: #f2d48a;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.checkout h2 {
+    text-align: center;
+    color: #f0ce7b;
+    margin-bottom: 8px;
+}
+
+.checkout-subtitle {
+    text-align: center;
+    color: #bcaec9;
+    margin-bottom: 25px;
+}
+
+.order-summary {
+    padding: 18px;
+    border-radius: 15px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(214,169,79,.35);
+    margin-bottom: 20px;
+}
+
+.order-summary div {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 8px 0;
+}
+
+.order-summary span:first-child {
+    color: #bcaec9;
+}
+
+.order-summary span:last-child {
+    color: #f2d07b;
+    font-weight: bold;
+}
+
+.checkout label {
+    display: block;
+    color: #decda8;
+    margin: 14px 0 6px;
+}
+
+.checkout input,
+.checkout select {
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    border: 1px solid #67487a;
+    background: #0f0716;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+}
+
+.checkout input:focus,
+.checkout select:focus {
+    border-color: #d5ae58;
+    box-shadow: 0 0 10px rgba(213,174,88,.2);
+}
+
+.finish-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    border: 0;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #d5ae58, #9b6bc4);
+    color: #170b20;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.finish-button:hover {
+    box-shadow: 0 0 25px rgba(214,174,88,.5);
+}
+
+.security {
+    text-align: center;
+    margin-top: 15px;
+    color: #8f8099;
+    font-size: .8rem;
+}
+
+/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -557,6 +603,10 @@ footer {
     .package-container {
         grid-template-columns: 1fr;
     }
+
+    .checkout {
+        padding: 25px 20px;
+    }
 }
 </style>
 </head>
@@ -565,7 +615,7 @@ footer {
 
 <div class="stars"></div>
 
-<header class="fade-in">
+<header>
 
     <div class="moon-container">
         <div class="moon"></div>
@@ -579,10 +629,12 @@ footer {
 
 </header>
 
+
 <main>
 
 <!-- CARTAS -->
-<section class="fade-in">
+
+<section>
 
     <div class="section-title">
         <h2>🔮 Escolha uma carta</h2>
@@ -593,7 +645,6 @@ footer {
 
         <div class="tarot-card">
             <div class="card-inner">
-
                 <div class="card-front">
                     <div class="card-symbol">✦</div>
                 </div>
@@ -603,13 +654,12 @@ footer {
                     <h3>O Amor</h3>
                     <p>Representa sentimentos, vínculos e conexões.</p>
                 </div>
-
             </div>
         </div>
 
+
         <div class="tarot-card">
             <div class="card-inner">
-
                 <div class="card-front">
                     <div class="card-symbol">☀️</div>
                 </div>
@@ -619,13 +669,12 @@ footer {
                     <h3>O Sol</h3>
                     <p>Simboliza clareza, energia e novos caminhos.</p>
                 </div>
-
             </div>
         </div>
 
+
         <div class="tarot-card">
             <div class="card-inner">
-
                 <div class="card-front">
                     <div class="card-symbol">🌙</div>
                 </div>
@@ -635,13 +684,12 @@ footer {
                     <h3>A Lua</h3>
                     <p>Representa intuição, emoções e mistérios.</p>
                 </div>
-
             </div>
         </div>
 
+
         <div class="tarot-card">
             <div class="card-inner">
-
                 <div class="card-front">
                     <div class="card-symbol">⭐</div>
                 </div>
@@ -651,77 +699,121 @@ footer {
                     <h3>A Estrela</h3>
                     <p>Simboliza esperança, inspiração e possibilidades.</p>
                 </div>
-
             </div>
         </div>
 
     </div>
 
-    <div class="tap-text">
-        ✦ Toque em uma carta para revelar ✦
-    </div>
-
 </section>
 
 
-<!-- PREÇOS -->
+<!-- TIRAGENS -->
 
-<section class="fade-in">
+<section>
 
     <div class="section-title">
         <h2>✨ Tabela de Tiragens</h2>
-        <p>Escolha a leitura que deseja realizar</p>
+        <p>Escolha sua leitura</p>
     </div>
 
     <div class="prices">
+
 
         <div class="price-card">
             <div class="icon">🃏</div>
             <h3>Pergunta Simples</h3>
             <p class="cards-count">3 cartas</p>
             <div class="price">R$ 5,00</div>
+
+            <button
+                class="buy-button"
+                onclick="abrirCheckout('Pergunta Simples', '3 cartas', 'R$ 5,00')">
+                🛒 Comprar
+            </button>
         </div>
+
 
         <div class="price-card">
             <div class="icon">🌙</div>
             <h3>Tiragem Rápida</h3>
             <p class="cards-count">5 cartas</p>
             <div class="price">R$ 8,00</div>
+
+            <button
+                class="buy-button"
+                onclick="abrirCheckout('Tiragem Rápida', '5 cartas', 'R$ 8,00')">
+                🛒 Comprar
+            </button>
         </div>
+
 
         <div class="price-card">
             <div class="icon">🔮</div>
             <h3>Tiragem Completa</h3>
             <p class="cards-count">9 cartas</p>
             <div class="price">R$ 12,00</div>
+
+            <button
+                class="buy-button"
+                onclick="abrirCheckout('Tiragem Completa', '9 cartas', 'R$ 12,00')">
+                🛒 Comprar
+            </button>
         </div>
+
 
         <div class="price-card">
             <div class="icon">❤️</div>
             <h3>Amor & Relacionamentos</h3>
             <p class="cards-count">7 cartas</p>
             <div class="price">R$ 10,00</div>
+
+            <button
+                class="buy-button"
+                onclick="abrirCheckout('Amor & Relacionamentos', '7 cartas', 'R$ 10,00')">
+                🛒 Comprar
+            </button>
         </div>
+
 
         <div class="price-card">
             <div class="icon">💰</div>
             <h3>Trabalho & Dinheiro</h3>
             <p class="cards-count">7 cartas</p>
             <div class="price">R$ 10,00</div>
+
+            <button
+                class="buy-button"
+                onclick="abrirCheckout('Trabalho & Dinheiro', '7 cartas', 'R$ 10,00')">
+                🛒 Comprar
+            </button>
         </div>
+
 
         <div class="price-card">
             <div class="icon">🌟</div>
             <h3>Tiragem Geral</h3>
             <p class="cards-count">12 cartas</p>
             <div class="price">R$ 15,00</div>
+
+            <button
+                class="buy-button"
+                onclick="abrirCheckout('Tiragem Geral', '12 cartas', 'R$ 15,00')">
+                🛒 Comprar
+            </button>
         </div>
+
 
         <div class="price-card">
             <div class="icon">👑</div>
             <h3>Tiragem Aprofundada</h3>
             <p class="cards-count">15 cartas</p>
             <div class="price">R$ 20,00</div>
+
+            <button
+                class="buy-button"
+                onclick="abrirCheckout('Tiragem Aprofundada', '15 cartas', 'R$ 20,00')">
+                🛒 Comprar
+            </button>
         </div>
 
     </div>
@@ -731,7 +823,7 @@ footer {
 
 <!-- PACOTES -->
 
-<section class="packages fade-in">
+<section class="packages">
 
     <div class="section-title">
         <h2>🌟 Pacotes Especiais</h2>
@@ -740,22 +832,43 @@ footer {
 
     <div class="package-container">
 
+
         <div class="package">
             <h3>🔮 2 Perguntas</h3>
             <p>Duas perguntas à sua escolha.</p>
             <strong>R$ 8,00</strong>
+
+            <button
+                class="buy-button"
+                onclick="abrirCheckout('Pacote 2 Perguntas', '2 perguntas', 'R$ 8,00')">
+                🛒 Comprar
+            </button>
         </div>
+
 
         <div class="package">
             <h3>🌙 3 Perguntas</h3>
             <p>Três perguntas para uma consulta mais completa.</p>
             <strong>R$ 10,00</strong>
+
+            <button
+                class="buy-button"
+                onclick="abrirCheckout('Pacote 3 Perguntas', '3 perguntas', 'R$ 10,00')">
+                🛒 Comprar
+            </button>
         </div>
+
 
         <div class="package">
             <h3>🌟 Pacote Completo</h3>
             <p>5 perguntas + uma tiragem geral.</p>
             <strong>R$ 20,00</strong>
+
+            <button
+                class="buy-button"
+                onclick="abrirCheckout('Pacote Completo', '5 perguntas + tiragem geral', 'R$ 20,00')">
+                🛒 Comprar
+            </button>
         </div>
 
     </div>
@@ -763,9 +876,9 @@ footer {
 </section>
 
 
-<!-- MENSAGEM -->
+<!-- DESTAQUE -->
 
-<section class="highlight fade-in">
+<section class="highlight">
 
     <div class="symbol">☾ ✦ ☽</div>
 
@@ -782,18 +895,14 @@ footer {
 
 <!-- WHATSAPP -->
 
-<div class="contact fade-in">
-
-    <!-- TROQUE O NÚMERO ABAIXO PELO SEU -->
+<div class="contact">
 
     <a
         class="whatsapp"
         href="https://wa.me/5500000000000"
         target="_blank"
-        rel="noopener"
-    >
-        <span>💬</span>
-        AGENDAR MINHA TIRAGEM
+        rel="noopener">
+        💬 Falar pelo WhatsApp
     </a>
 
 </div>
@@ -802,70 +911,99 @@ footer {
 
 
 <footer>
-
     ✦ ☾ Baralho Cigano ☽ ✦
     <br>
-
     Leituras para reflexão e entretenimento.
-
 </footer>
 
 
-<script>
+<!-- =========================
+     CHECKOUT
+========================= -->
 
-/* =========================
-   CARTAS VIRANDO
-========================= */
+<div class="checkout-overlay" id="checkoutOverlay">
 
-const cards = document.querySelectorAll(".tarot-card");
+    <div class="checkout">
 
-cards.forEach(card => {
+        <button
+            class="close-checkout"
+            onclick="fecharCheckout()">
+            ×
+        </button>
 
-    card.addEventListener("click", () => {
+        <h2>🔮 Finalizar Compra</h2>
 
-        card.classList.toggle("flipped");
-
-    });
-
-});
+        <p class="checkout-subtitle">
+            Complete seus dados para solicitar sua tiragem.
+        </p>
 
 
-/* =========================
-   ANIMAÇÃO SUAVE AO ROLAR
-========================= */
+        <div class="order-summary">
 
-const animatedElements =
-    document.querySelectorAll(".fade-in");
+            <div>
+                <span>Tiragem:</span>
+                <span id="checkoutNome"></span>
+            </div>
 
-const observer = new IntersectionObserver(
-    entries => {
+            <div>
+                <span>Cartas:</span>
+                <span id="checkoutCartas"></span>
+            </div>
 
-        entries.forEach(entry => {
+            <div>
+                <span>Valor:</span>
+                <span id="checkoutPreco"></span>
+            </div>
 
-            if (entry.isIntersecting) {
+        </div>
 
-                entry.target.style.animationPlayState = "running";
 
-            }
+        <form id="checkoutForm">
 
-        });
+            <label for="nome">
+                Seu nome
+            </label>
 
-    },
-    {
-        threshold: 0.1
-    }
-);
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome"
+                required
+            >
 
-animatedElements.forEach(element => {
 
-    element.style.animationPlayState = "paused";
+            <label for="telefone">
+                WhatsApp
+            </label>
 
-    observer.observe(element);
+            <input
+                type="tel"
+                id="telefone"
+                placeholder="(00) 00000-0000"
+                required
+            >
 
-});
 
-</script>
+            <label for="pagamento">
+                Forma de pagamento
+            </label>
 
-</body>
-</html>
-```
+            <select id="pagamento" required>
+
+                <option value="">
+                    Selecione uma opção
+                </option>
+
+                <option value="Pix">
+                    💠 Pix
+                </option>
+
+                <option value="WhatsApp">
+                    💬 Combinar pelo WhatsApp
+                </option>
+
+            </select>
+
+
+            <button
+                type="submit
