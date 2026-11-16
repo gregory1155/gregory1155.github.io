@@ -4,235 +4,906 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feliz Aniversário, Pedro Jânio!</title>
+<meta name="theme-color" content="#180713">
+<title>Uma aventura chamada Pedro Jânio ❤️</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --red: #ed2549;
+  --pink: #ff8ca7;
+  --gold: #f5d68a;
+  --dark: #170914;
+  --white: #fff5f7;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
 body {
-    min-height: 100vh;
-    overflow-x: hidden;
-    background: linear-gradient(135deg, #160006, #720d20, #c51636);
-    font-family: 'Trebuchet MS', sans-serif;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 25px;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, #70203b 0%, transparent 55%),
+    linear-gradient(150deg, #100711, #300d22, #170914);
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+button { font-family: inherit; }
+
+/* FUNDO */
+
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  color: #fff1d0;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.6); }
+  to { opacity: 1; transform: scale(1.3); }
+}
+
+.shooting-star {
+  position: fixed;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, white);
+  transform: rotate(-35deg);
+  animation: shoot 5s linear infinite;
+  opacity: 0;
+  z-index: 0;
+}
+
+@keyframes shoot {
+  0% { transform: translate(0,0) rotate(-35deg); opacity: 0; }
+  10% { opacity: 1; }
+  25% { transform: translate(-300px,250px) rotate(-35deg); opacity: 0; }
+  100% { opacity: 0; }
 }
 
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: radial-gradient(#fff 3px, transparent 4px);
-    background-size: 65px 65px;
-    opacity: .12;
-    pointer-events: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(#ffb5c4 2px, transparent 3px);
+  background-size: 70px 70px;
+  opacity: .07;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.container {
-    position: relative;
-    z-index: 3;
-    max-width: 650px;
-    width: 100%;
-    padding: 35px 25px;
-    background: rgba(20,0,5,.85);
-    border: 2px solid #ff7588;
-    border-radius: 25px;
-    box-shadow: 0 0 35px #ff244b99;
-    animation: aparecer 1.5s ease;
+/* ELEMENTOS FLUTUANTES */
+
+.floating {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  animation: floatAround 7s ease-in-out infinite;
+  opacity: .6;
 }
 
-h1 {
-    font-size: clamp(30px, 7vw, 45px);
-    color: #ff526e;
-    text-shadow: 0 0 20px #ff244b;
-    animation: brilho 2s infinite alternate;
+@keyframes floatAround {
+  0%,100% { transform: translateY(0) rotate(-10deg); }
+  50% { transform: translateY(-25px) rotate(12deg); }
 }
 
-.mascote {
-    font-size: 75px;
-    margin: 20px;
-    animation: flutuar 3s infinite;
+/* LAYOUT */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
 }
 
-.subtitulo {
-    margin: 20px 0;
-    color: #ffd9df;
-    font-size: 18px;
+.screen {
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 45px 20px;
+  text-align: center;
 }
 
-button {
-    background: #ed1838;
-    color: white;
-    padding: 16px 30px;
-    border: none;
-    border-radius: 40px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 20px #ff244b;
-    transition: .3s;
+.screen.active {
+  display: flex;
+  animation: screenEnter 1s ease;
 }
 
-button:hover {
-    transform: scale(1.1);
-    background: #ff4560;
+@keyframes screenEnter {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-#surpresa {
-    display: none;
-    margin-top: 30px;
-    animation: subir 1.2s ease;
+.small-label {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
 
-#surpresa h2 {
-    color: #ff8093;
-    margin-bottom: 20px;
+h1, h2, h3 {
+  font-family: 'Cinzel', serif;
 }
 
-#mensagem {
-    white-space: pre-wrap;
-    line-height: 1.8;
-    font-size: 17px;
-    color: #fff0f2;
+/* JOANINHA */
+
+.ladybug {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 4px solid #160b13;
+  position: relative;
+  margin: 30px auto;
+  box-shadow: 0 0 35px #ff315c99;
+  animation: bugFloat 3s ease-in-out infinite;
 }
 
-.assinatura {
-    margin-top: 25px;
-    color: #ff8093;
-    font-style: italic;
+.ladybug::before {
+  content: "";
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  background: #171018;
+  border-radius: 50%;
+  left: 25px;
+  top: -12px;
 }
 
-/* FRASES MÁGICAS */
-
-.frase {
-    position: fixed;
-    z-index: 5;
-    max-width: 260px;
-    padding: 14px 18px;
-    background: rgba(255,255,255,.95);
-    color: #a5092b;
-    border: 2px solid #ff526e;
-    border-radius: 18px;
-    font-weight: bold;
-    font-size: 15px;
-    box-shadow: 0 0 25px #ff9aaa;
-    animation: fraseAnimada 4s ease forwards;
-    pointer-events: none;
+.ladybug::after {
+  content: "●       ●";
+  white-space: pre;
+  color: #160b13;
+  position: absolute;
+  top: 35px;
+  left: 12px;
+  font-size: 22px;
+  line-height: 35px;
+  text-shadow: 38px 0 #160b13;
 }
 
-@keyframes fraseAnimada {
-    0% {
-        opacity: 0;
-        transform: scale(.2) rotate(-15deg);
-    }
-    20% {
-        opacity: 1;
-        transform: scale(1.1) rotate(5deg);
-    }
-    35% {
-        transform: scale(1) rotate(0);
-    }
-    80% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-80px) scale(.7);
-    }
+.bug-wing {
+  position: absolute;
+  width: 3px;
+  height: 90px;
+  background: #160b13;
+  left: 44px;
+  top: 0;
+  transform: rotate(35deg);
 }
 
-/* ANIMAÇÕES */
-
-.decoracao {
-    position: fixed;
-    top: -40px;
-    font-size: 25px;
-    pointer-events: none;
-    z-index: 2;
-    animation: cair linear forwards;
+@keyframes bugFloat {
+  0%,100% { transform: translateY(0) rotate(-8deg); }
+  50% { transform: translateY(-16px) rotate(8deg); }
 }
 
-@keyframes cair {
-    to {
-        transform: translateY(110vh) rotate(720deg);
-        opacity: 0;
-    }
+/* TELA INICIAL */
+
+.hero-title {
+  font-size: clamp(35px, 8vw, 66px);
+  line-height: 1.2;
+  color: #fff0f3;
+  text-shadow: 0 0 25px #ff315c;
 }
 
-.coracao {
-    position: fixed;
-    bottom: -30px;
-    animation: subirCoracao 5s linear forwards;
-    pointer-events: none;
-    z-index: 1;
+.hero-title span {
+  color: var(--pink);
+  display: block;
 }
 
-@keyframes subirCoracao {
-    to {
-        transform: translateY(-110vh) scale(1.5);
-        opacity: 0;
-    }
+.hero-description {
+  max-width: 450px;
+  color: #e8c9d3;
+  line-height: 1.9;
+  margin: 20px auto 30px;
+  font-size: 14px;
 }
 
-@keyframes aparecer {
-    from {opacity: 0; transform: scale(.7);}
-    to {opacity: 1; transform: scale(1);}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--gold);
+  margin: 22px auto;
+  justify-content: center;
 }
 
-@keyframes subir {
-    from {opacity: 0; transform: translateY(35px);}
-    to {opacity: 1; transform: translateY(0);}
+.divider::before, .divider::after {
+  content: "";
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, var(--gold));
 }
 
-@keyframes brilho {
-    from {text-shadow: 0 0 5px #ff244b;}
-    to {text-shadow: 0 0 25px #ff244b, 0 0 40px #ff7588;}
+.divider::after {
+  transform: rotate(180deg);
 }
 
-@keyframes flutuar {
-    0%,100% {transform: translateY(0) rotate(-5deg);}
-    50% {transform: translateY(-15px) rotate(5deg);}
+.main-button {
+  border: 1px solid #ffb5c4;
+  padding: 16px 30px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff4567, #a90e36);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 30px #ed254966;
+  transition: .35s;
 }
 
+.main-button:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 0 45px #ff4567;
+}
+
+footer {
+  color: #b997a7;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 45px;
+}
+
+/* CARTA */
+
+.letter-container {
+  width: min(100%, 570px);
+  margin: 20px auto;
+}
+
+.envelope {
+  position: relative;
+  width: min(100%, 390px);
+  height: 250px;
+  margin: 30px auto;
+  background: #8c193b;
+  border: 2px solid #f1b5c3;
+  border-radius: 8px;
+  box-shadow: 0 15px 50px #0008;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(145deg, transparent 49%, #a9274e 50%),
+    linear-gradient(215deg, transparent 49%, #c0395c 50%);
+  z-index: 2;
+}
+
+.flap {
+  position: absolute;
+  inset: 0;
+  height: 130px;
+  background: #d33b5f;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 1s;
+  z-index: 4;
+}
+
+.seal {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  background: radial-gradient(circle, #ff8299, #a30d32);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  left: 50%;
+  top: 95px;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  transition: .5s;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .seal {
+  opacity: 0;
+  transform: translateX(-50%) scale(0);
+}
+
+.letter-inside {
+  position: absolute;
+  background: #fff0e6;
+  color: #69213b;
+  width: 85%;
+  height: 195px;
+  top: 25px;
+  left: 7.5%;
+  padding: 25px;
+  border-radius: 5px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  transition: transform 1s;
+}
+
+.envelope.open .letter-inside {
+  transform: translateY(-130px);
+}
+
+.envelope-hint {
+  color: var(--gold);
+  font-size: 13px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .4; }
+}
+
+/* CARTA ABERTA */
+
+.letter-paper {
+  display: none;
+  position: relative;
+  width: min(100%, 650px);
+  margin: 35px auto;
+  padding: 35px 25px;
+  border: 1px solid #f1c4ad;
+  border-radius: 5px;
+  background:
+    radial-gradient(circle at top right, #ffe5d5, transparent 40%),
+    #fff3e9;
+  color: #58233b;
+  box-shadow: 0 20px 60px #0008;
+  animation: paperOpen 1s ease;
+}
+
+@keyframes paperOpen {
+  from { opacity: 0; transform: translateY(50px) scale(.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.letter-paper h2 {
+  color: #a9163c;
+  font-size: 25px;
+  margin-bottom: 22px;
+}
+
+.letter-paper p {
+  font-size: 14px;
+  line-height: 2;
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+.letter-signature {
+  text-align: right !important;
+  margin-top: 25px;
+  color: #b0214a;
+  font-family: 'Cinzel', serif;
+}
+
+/* FRASES ESPECIAIS */
+
+.quotes-section {
+  width: min(100%, 650px);
+  margin: 40px auto;
+}
+
+.quotes-section h2 {
+  font-size: 25px;
+  color: var(--gold);
+  margin-bottom: 25px;
+}
+
+.quote-card {
+  padding: 19px;
+  margin: 13px 0;
+  background: linear-gradient(120deg, #55162eaa, #8c244288);
+  border: 1px solid #f58ba7;
+  border-radius: 15px;
+  box-shadow: 0 0 18px #ff547533;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: 1s;
+  color: #fff1f5;
+  font-size: 14px;
+}
+
+.quote-card.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.quote-card span {
+  display: block;
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+/* CANTINHO ARTISTA */
+
+.artist-section {
+  width: min(100%, 600px);
+  margin: 35px auto;
+  padding: 25px;
+  border: 1px solid #d69cba;
+  border-radius: 20px;
+  background: #31132799;
+}
+
+.artist-icons {
+  font-size: 35px;
+  letter-spacing: 12px;
+  margin: 20px 0;
+  animation: artistFloat 3s infinite alternate;
+}
+
+@keyframes artistFloat {
+  to { transform: translateY(-10px) rotate(3deg); }
+}
+
+.artist-section h2 {
+  color: #ffb5c8;
+  margin-bottom: 15px;
+}
+
+.artist-section p {
+  color: #ead1db;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* FINAL */
+
+.final-title {
+  font-size: clamp(32px, 8vw, 58px);
+  color: #ff9bb2;
+  text-shadow: 0 0 30px #ff315c;
+  margin: 25px 0;
+}
+
+.final-heart {
+  font-size: 80px;
+  animation: heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  20% { transform: scale(1.2); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.12); }
+}
+
+/* CONFETES */
+
+.confetti {
+  position: fixed;
+  top: -30px;
+  z-index: 20;
+  pointer-events: none;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(900deg);
+    opacity: 0;
+  }
+}
+
+/* BOTÕES DE NAVEGAÇÃO */
+
+.nav-button {
+  margin: 20px 5px;
+  padding: 13px 23px;
+  border-radius: 30px;
+  border: 1px solid #f6a1b6;
+  background: #5c1835;
+  color: white;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.nav-button:hover {
+  background: #a9234a;
+  transform: scale(1.05);
+}
+
+.hidden { display: none !important; }
+
+@media(max-width: 480px) {
+  .screen { padding: 35px 15px; }
+  .letter-paper { padding: 25px 18px; }
+  .letter-paper p { font-size: 13px; }
+  .envelope { height: 220px; }
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div id="stars"></div>
 
-    <div class="mascote">🐞🎨</div>
+<div class="floating" style="top:12%;left:6%;font-size:30px">🐞</div>
+<div class="floating" style="top:25%;right:7%;font-size:25px;animation-delay:1s">✨</div>
+<div class="floating" style="bottom:15%;left:8%;font-size:25px;animation-delay:2s">❤️</div>
+<div class="shooting-star" style="top:20%;right:0"></div>
 
-    <h1>Feliz Aniversário!</h1>
+<main class="page">
 
-    <p class="subtitulo">
-        Hoje o dia é todo seu, Pedro Jânio! ❤️
+<!-- TELA 1: ENTRADA -->
+
+<section class="screen active" id="home">
+
+  <div class="small-label">Uma edição especial • 2026</div>
+
+  <div class="ladybug">
+    <div class="bug-wing"></div>
+  </div>
+
+  <h1 class="hero-title">
+    Uma aventura
+    <span>chamada Pedro Jânio</span>
+  </h1>
+
+  <div class="divider">✦ 🐞 ✦</div>
+
+  <p class="hero-description">
+    Algumas pessoas são como estrelas: deixam tudo mais especial
+    simplesmente por existirem. Hoje, toda a magia é dedicada a você!
+  </p>
+
+  <button class="main-button" onclick="goTo('invitation')">
+    ✨ COMEÇAR ESTA AVENTURA ✨
+  </button>
+
+  <footer>
+    UM DIA ESPECIAL • UMA PESSOA ESPECIAL
+  </footer>
+
+</section>
+
+
+<!-- TELA 2: CONVITE -->
+
+<section class="screen" id="invitation">
+
+  <div class="small-label">Uma mensagem chegou para você</div>
+
+  <h1 class="hero-title">
+    Ei, Pedro! ❤️
+  </h1>
+
+  <div class="divider">✦</div>
+
+  <p class="hero-description">
+    Parece que uma missão especial apareceu em Paris...
+    Mas desta vez, a missão é muito mais importante:
+    celebrar alguém incrível!
+  </p>
+
+  <div style="font-size:60px;margin:20px">🐞 💌 🐈‍⬛</div>
+
+  <p style="color:#ffd4df;margin-bottom:25px">
+    Você está preparado para descobrir sua surpresa?
+  </p>
+
+  <button class="main-button" onclick="goTo('envelope')">
+    SIM! QUERO DESCOBRIR! ❤️
+  </button>
+
+  <button class="nav-button" onclick="goTo('home')">
+    Voltar
+  </button>
+
+</section>
+
+
+<!-- TELA 3: ENVELOPE -->
+
+<section class="screen" id="envelope">
+
+  <div class="small-label">Correspondência especial</div>
+
+  <h1 style="color:#ff9bb2;font-size:32px">
+    Uma carta para você...
+  </h1>
+
+  <p class="hero-description">
+    Existe algo que foi preparado especialmente para este dia.
+    Abra o envelope para descobrir!
+  </p>
+
+  <div class="letter-container">
+
+    <div class="envelope" id="envelopeBox" onclick="openLetter()">
+
+      <div class="letter-inside">
+        <span style="font-size:28px">❤️</span>
+        <strong>Para Pedro Jânio</strong>
+        <small style="margin-top:10px">Com carinho...</small>
+      </div>
+
+      <div class="flap"></div>
+      <div class="seal">🐞</div>
+
+    </div>
+
+  </div>
+
+  <p class="envelope-hint" id="envelopeHint">
+    ✨ TOQUE NO ENVELOPE PARA ABRIR ✨
+  </p>
+
+  <button class="nav-button" onclick="goTo('invitation')">
+    Voltar
+  </button>
+
+</section>
+
+
+<!-- TELA 4: CARTA -->
+
+<section class="screen" id="letter">
+
+  <div class="small-label">Uma homenagem especial</div>
+
+  <div class="letter-paper" id="paper">
+
+    <h2>🎂 Feliz aniversário, Pedro Jânio!</h2>
+
+    <p id="letterText"></p>
+
+    <p class="letter-signature">
+      Com carinho! ❤️🐞
     </p>
 
-    <p style="margin-bottom:25px">
-        Uma surpresa especial está esperando por você...
+  </div>
+
+  <button class="main-button" onclick="goTo('quotes')">
+    DESCOBRIR MAIS SURPRESAS ✨
+  </button>
+
+</section>
+
+
+<!-- TELA 5: FRASES -->
+
+<section class="screen" id="quotes">
+
+  <div class="small-label">O universo de Miraculous</div>
+
+  <h1 style="color:#ff9bb2;font-size:32px">
+    Pequenas mensagens,
+    <br>grandes significados.
+  </h1>
+
+  <p class="hero-description">
+    Algumas palavras para deixar seu dia ainda mais especial!
+  </p>
+
+  <div class="quotes-section">
+
+    <div class="quote-card">
+      <span>🐞</span>
+      "Miraculous, simplesmente!"
+    </div>
+
+    <div class="quote-card">
+      <span>✨</span>
+      "Até os maiores heróis precisam acreditar em si mesmos."
+    </div>
+
+    <div class="quote-card">
+      <span>🐈‍⬛</span>
+      "A vida fica mais divertida quando temos coragem de ser quem somos."
+    </div>
+
+    <div class="quote-card">
+      <span>🎨</span>
+      "Sua imaginação é o limite!"
+    </div>
+
+    <div class="quote-card">
+      <span>❤️</span>
+      "Que sua próxima temporada seja a melhor de todas!"
+    </div>
+
+  </div>
+
+  <button class="main-button" onclick="goTo('artist')">
+    CONTINUAR A AVENTURA 🎨
+  </button>
+
+</section>
+
+
+<!-- TELA 6: ARTISTA -->
+
+<section class="screen" id="artist">
+
+  <div class="small-label">Um talento especial</div>
+
+  <h1 style="font-size:35px;color:#ff9bb2">
+    O artista por trás da magia!
+  </h1>
+
+  <div class="artist-section">
+
+    <div class="artist-icons">
+      ✏️ 🎨 🖌️
+    </div>
+
+    <h2>Continue criando!</h2>
+
+    <p>
+      Que nunca faltem ideias para colocar no papel,
+      histórias para desenhar e mundos para imaginar.
+
+      Cada desenho é uma pequena parte de você,
+      uma maneira de mostrar ao mundo como sua
+      imaginação é incrível.
+
+      Nunca deixe de explorar sua criatividade.
+      O próximo grande desenho pode ser o começo
+      de uma história extraordinária!
     </p>
 
-    <button onclick="abrirSurpresa()">
-        🎁 Abrir minha surpresa!
-    </button>
+  </div>
 
-    <div id="surpresa">
+  <div style="font-size:45px;margin:20px">
+    🐞 ✨ 🐈‍⬛
+  </div>
 
-        <h2>✨ Uma mensagem especial para você! ✨</h2>
+  <button class="main-button" onclick="goTo('final')">
+    VER A ÚLTIMA SURPRESA ❤️
+  </button>
 
-        <p id="mensagem">
-🎉🐞 FELIZ ANIVERSÁRIO, PEDRO JÂNIO! ❤️✨
+</section>
 
-Hoje é o seu dia, e eu não poderia deixar passar sem te desejar tudo de melhor que a vida pode oferecer!
+
+<!-- TELA 7: FINAL -->
+
+<section class="screen" id="final">
+
+  <div class="small-label">Missão concluída!</div>
+
+  <div class="final-heart">❤️</div>
+
+  <h1 class="final-title">
+    FELIZ ANIVERSÁRIO!
+  </h1>
+
+  <div class="divider">🐞 ✨ 🐈‍⬛</div>
+
+  <h2 style="color:#f5d68a;font-size:24px;margin-bottom:20px">
+    Pedro Jânio
+  </h2>
+
+  <p class="hero-description">
+    Que sua vida seja cheia de cores, desenhos,
+    aventuras, amizades e momentos inesquecíveis.
+
+    Nunca deixe de ser você!
+    Este é apenas o começo de uma nova temporada
+    cheia de possibilidades.
+  </p>
+
+  <p style="color:#ffb5c8;font-family:'Cinzel';margin:20px">
+    "Sua história merece ser extraordinária."
+  </p>
+
+  <button class="main-button" onclick="celebrate()">
+    🎉 COMEMORAR MAIS UMA VEZ!
+  </button>
+
+  <footer>
+    FEITO ESPECIALMENTE PARA PEDRO JÂNIO ❤️
+  </footer>
+
+</section>
+
+</main>
+
+
+<script>
+
+// CRIAÇÃO DAS ESTRELAS
+
+const stars = document.getElementById('stars');
+
+for(let i = 0; i < 90; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.innerHTML = Math.random() > .5 ? '✦' : '·';
+
+  star.style.left = Math.random() * 100 + '%';
+  star.style.top = Math.random() * 100 + '%';
+  star.style.fontSize = (8 + Math.random() * 15) + 'px';
+  star.style.animationDelay = Math.random() * 4 + 's';
+
+  stars.appendChild(star);
+}
+
+
+// NAVEGAÇÃO ENTRE TELAS
+
+function goTo(id) {
+
+  document.querySelectorAll('.screen').forEach(screen => {
+    screen.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  if(id === 'quotes') {
+    showQuotes();
+  }
+
+  if(id === 'final') {
+    celebrate();
+  }
+}
+
+
+// ANIMAÇÃO DO ENVELOPE
+
+let letterOpened = false;
+
+function openLetter() {
+
+  if(letterOpened) return;
+
+  letterOpened = true;
+
+  document.getElementById('envelopeBox').classList.add('open');
+
+  document.getElementById('envelopeHint').innerText =
+    '💌 SUA CARTA ESTÁ SENDO ABERTA...';
+
+  setTimeout(() => {
+
+    document.getElementById('paper').style.display = 'block';
+
+    goTo('letter');
+
+    typeMessage();
+
+    celebrate();
+
+  }, 1400);
+}
+
+
+// TEXTO PERSONALIZADO
+
+const message = `Hoje é o seu dia, e eu não poderia deixar passar sem te desejar tudo de melhor que a vida pode oferecer!
 
 Que essa nova fase seja repleta de felicidade, conquistas, momentos inesquecíveis e muita inspiração para continuar fazendo aquilo que você ama. Nunca deixe de desenhar, criar e transformar sua imaginação em algo extraordinário. Afinal, o mundo precisa de mais pessoas que enxergam beleza nos pequenos detalhes! 🎨
 
@@ -242,119 +913,98 @@ Lembre-se: sua história ainda está sendo escrita, e você é o protagonista de
 
 Espero que nunca faltem motivos para sorrir, sonhos para realizar e aventuras para viver.
 
-Feliz aniversário! Continue sendo essa pessoa única, criativa e especial! 🐞🎨✨
-        </p>
+Que seu próximo ano seja tão incrível que até o Mestre Fu ficaria orgulhoso!
 
-        <p class="assinatura">
-            Com carinho! ❤️
-        </p>
+Feliz aniversário! Continue sendo essa pessoa única, criativa e especial. Nunca perca sua essência! 🐞🎨✨`;
 
-    </div>
+let typingStarted = false;
 
-</div>
+function typeMessage() {
 
-<script>
+  if(typingStarted) return;
 
-let frases = [
-    "🐞 Miraculous, simplesmente!",
-    "✨ Até os maiores heróis precisam acreditar em si mesmos.",
-    "🐈‍⬛ A vida fica mais divertida quando temos coragem de ser quem somos.",
-    "🎨 Sua imaginação é o limite!",
-    "❤️ Que sua próxima temporada seja a melhor de todas!"
-];
+  typingStarted = true;
 
-let aberto = false;
+  const element = document.getElementById('letterText');
 
-function abrirSurpresa() {
+  let index = 0;
 
-    if (aberto) return;
-    aberto = true;
+  function write() {
 
-    document.getElementById("surpresa").style.display = "block";
-    document.querySelector("button").style.display = "none";
+    if(index < message.length) {
 
-    chuvaDeConfetes();
-    mostrarFrases();
-}
+      element.textContent += message.charAt(index);
 
-// FRASES APARECENDO EM DIFERENTES LUGARES
+      index++;
 
-function mostrarFrases() {
+      setTimeout(write, 22);
 
-    frases.forEach((texto, index) => {
-
-        setTimeout(() => {
-
-            let frase = document.createElement("div");
-            frase.className = "frase";
-            frase.innerText = texto;
-
-            frase.style.left =
-                Math.random() * 65 + 10 + "vw";
-
-            frase.style.top =
-                Math.random() * 65 + 10 + "vh";
-
-            document.body.appendChild(frase);
-
-            setTimeout(() => frase.remove(), 4200);
-
-        }, index * 1200);
-
-    });
-
-}
-
-// CHUVA DE EMOJIS
-
-function chuvaDeConfetes() {
-
-    let emojis = ["❤️", "🐞", "✨", "🎨", "🎉", "⭐", "🐈‍⬛"];
-
-    for (let i = 0; i < 100; i++) {
-
-        let item = document.createElement("div");
-
-        item.className = "decoracao";
-
-        item.innerText =
-            emojis[Math.floor(Math.random() * emojis.length)];
-
-        item.style.left = Math.random() * 100 + "vw";
-
-        item.style.animationDuration =
-            (3 + Math.random() * 5) + "s";
-
-        item.style.animationDelay =
-            Math.random() * 2 + "s";
-
-        document.body.appendChild(item);
-
-        setTimeout(() => item.remove(), 10000);
     }
+
+  }
+
+  write();
 }
 
-// CORAÇÕES SUBINDO CONTINUAMENTE
 
-setInterval(() => {
+// FRASES APARECENDO GRADUALMENTE
 
-    let coracao = document.createElement("div");
+let quotesStarted = false;
 
-    coracao.className = "coracao";
-    coracao.innerText = "❤️";
+function showQuotes() {
 
-    coracao.style.left = Math.random() * 100 + "vw";
+  if(quotesStarted) return;
 
-    coracao.style.fontSize =
-        (15 + Math.random() * 25) + "px";
+  quotesStarted = true;
 
-    document.body.appendChild(coracao);
+  const cards = document.querySelectorAll('.quote-card');
 
-    setTimeout(() => coracao.remove(), 5000);
+  cards.forEach((card, index) => {
 
-}, 700);
+    setTimeout(() => {
+      card.classList.add('show');
+    }, 700 * (index + 1));
+
+  });
+}
+
+
+// CHUVA DE CONFETES
+
+function celebrate() {
+
+  const emojis = ['❤️','🐞','✨','🎨','🎉','⭐','💗','🐈‍⬛'];
+
+  for(let i = 0; i < 110; i++) {
+
+    const confetti = document.createElement('div');
+
+    confetti.className = 'confetti';
+
+    confetti.textContent =
+      emojis[Math.floor(Math.random() * emojis.length)];
+
+    confetti.style.left = Math.random() * 100 + 'vw';
+
+    confetti.style.fontSize =
+      (15 + Math.random() * 20) + 'px';
+
+    confetti.style.animationDuration =
+      (3 + Math.random() * 5) + 's';
+
+    confetti.style.animationDelay =
+      Math.random() * 2 + 's';
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 10000);
+
+  }
+
+}
 
 </script>
 
 </body>
-</html>
+      </html>
+      
