@@ -16,22 +16,21 @@
 body {
     min-height: 100vh;
     overflow-x: hidden;
+    background: linear-gradient(135deg, #160006, #720d20, #c51636);
     font-family: 'Trebuchet MS', sans-serif;
-    background: linear-gradient(135deg, #180609, #650d1c, #bd152c);
     color: white;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 25px;
 }
 
-/* Bolinhas do tema Ladybug */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: radial-gradient(#ffccd2 3px, transparent 4px);
+    background-image: radial-gradient(#fff 3px, transparent 4px);
     background-size: 65px 65px;
     opacity: .12;
     pointer-events: none;
@@ -39,42 +38,42 @@ body::before {
 
 .container {
     position: relative;
-    z-index: 2;
-    width: 100%;
+    z-index: 3;
     max-width: 650px;
+    width: 100%;
     padding: 35px 25px;
-    border: 2px solid rgba(255,255,255,.3);
+    background: rgba(20,0,5,.85);
+    border: 2px solid #ff7588;
     border-radius: 25px;
-    background: rgba(20, 0, 5, .75);
-    box-shadow: 0 0 35px #ff244b88;
+    box-shadow: 0 0 35px #ff244b99;
     animation: aparecer 1.5s ease;
 }
 
 h1 {
-    color: #ff435e;
     font-size: clamp(30px, 7vw, 45px);
-    text-shadow: 0 0 15px #ff163c;
+    color: #ff526e;
+    text-shadow: 0 0 20px #ff244b;
     animation: brilho 2s infinite alternate;
-}
-
-.subtitulo {
-    margin: 18px 0;
-    font-size: 18px;
-    color: #ffd9df;
 }
 
 .mascote {
     font-size: 75px;
     margin: 20px;
-    animation: flutuar 3s ease-in-out infinite;
+    animation: flutuar 3s infinite;
+}
+
+.subtitulo {
+    margin: 20px 0;
+    color: #ffd9df;
+    font-size: 18px;
 }
 
 button {
+    background: #ed1838;
+    color: white;
     padding: 16px 30px;
     border: none;
     border-radius: 40px;
-    background: #ed1838;
-    color: white;
     font-size: 17px;
     font-weight: bold;
     cursor: pointer;
@@ -94,7 +93,7 @@ button:hover {
 }
 
 #surpresa h2 {
-    color: #ff7186;
+    color: #ff8093;
     margin-bottom: 20px;
 }
 
@@ -111,50 +110,98 @@ button:hover {
     font-style: italic;
 }
 
+/* FRASES MÁGICAS */
+
+.frase {
+    position: fixed;
+    z-index: 5;
+    max-width: 260px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,.95);
+    color: #a5092b;
+    border: 2px solid #ff526e;
+    border-radius: 18px;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 0 0 25px #ff9aaa;
+    animation: fraseAnimada 4s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes fraseAnimada {
+    0% {
+        opacity: 0;
+        transform: scale(.2) rotate(-15deg);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.1) rotate(5deg);
+    }
+    35% {
+        transform: scale(1) rotate(0);
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-80px) scale(.7);
+    }
+}
+
+/* ANIMAÇÕES */
+
 .decoracao {
     position: fixed;
+    top: -40px;
     font-size: 25px;
     pointer-events: none;
-    animation: cair linear infinite;
-    z-index: 1;
+    z-index: 2;
+    animation: cair linear forwards;
+}
+
+@keyframes cair {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
 }
 
 .coracao {
     position: fixed;
-    animation: subirCoracao 5s linear infinite;
+    bottom: -30px;
+    animation: subirCoracao 5s linear forwards;
     pointer-events: none;
-}
-
-@keyframes aparecer {
-    from { opacity: 0; transform: scale(.7); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes subir {
-    from { opacity: 0; transform: translateY(35px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes brilho {
-    from { text-shadow: 0 0 5px #ff244b; }
-    to { text-shadow: 0 0 25px #ff244b, 0 0 40px #ff7588; }
-}
-
-@keyframes flutuar {
-    0%, 100% { transform: translateY(0) rotate(-5deg); }
-    50% { transform: translateY(-15px) rotate(5deg); }
-}
-
-@keyframes cair {
-    from { transform: translateY(-10vh) rotate(0deg); }
-    to { transform: translateY(110vh) rotate(360deg); }
+    z-index: 1;
 }
 
 @keyframes subirCoracao {
-    from { transform: translateY(110vh) scale(.5); opacity: 0; }
-    20% { opacity: 1; }
-    to { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    to {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
 }
+
+@keyframes aparecer {
+    from {opacity: 0; transform: scale(.7);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+@keyframes subir {
+    from {opacity: 0; transform: translateY(35px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes brilho {
+    from {text-shadow: 0 0 5px #ff244b;}
+    to {text-shadow: 0 0 25px #ff244b, 0 0 40px #ff7588;}
+}
+
+@keyframes flutuar {
+    0%,100% {transform: translateY(0) rotate(-5deg);}
+    50% {transform: translateY(-15px) rotate(5deg);}
+}
+
 </style>
 </head>
 
@@ -170,8 +217,8 @@ button:hover {
         Hoje o dia é todo seu, Pedro Jânio! ❤️
     </p>
 
-    <p style="margin-bottom: 25px;">
-        Preparei uma pequena surpresa especialmente para você...
+    <p style="margin-bottom:25px">
+        Uma surpresa especial está esperando por você...
     </p>
 
     <button onclick="abrirSurpresa()">
@@ -179,66 +226,127 @@ button:hover {
     </button>
 
     <div id="surpresa">
+
         <h2>✨ Uma mensagem especial para você! ✨</h2>
 
         <p id="mensagem">
-            ESCREVA SUA MENSAGEM AQUI!
+🎉🐞 FELIZ ANIVERSÁRIO, PEDRO JÂNIO! ❤️✨
+
+Hoje é o seu dia, e eu não poderia deixar passar sem te desejar tudo de melhor que a vida pode oferecer!
+
+Que essa nova fase seja repleta de felicidade, conquistas, momentos inesquecíveis e muita inspiração para continuar fazendo aquilo que você ama. Nunca deixe de desenhar, criar e transformar sua imaginação em algo extraordinário. Afinal, o mundo precisa de mais pessoas que enxergam beleza nos pequenos detalhes! 🎨
+
+Que você tenha a coragem da Ladybug, a confiança do Cat Noir e a criatividade necessária para desenhar os seus próprios caminhos.
+
+Lembre-se: sua história ainda está sendo escrita, e você é o protagonista dela. Não deixe ninguém apagar as cores do seu mundo!
+
+Espero que nunca faltem motivos para sorrir, sonhos para realizar e aventuras para viver.
+
+Feliz aniversário! Continue sendo essa pessoa única, criativa e especial! 🐞🎨✨
         </p>
 
         <p class="assinatura">
             Com carinho! ❤️
         </p>
+
     </div>
 
 </div>
 
 <script>
 
-// ABRIR SURPRESA
-function abrirSurpresa() {
-    document.getElementById("surpresa").style.display = "block";
+let frases = [
+    "🐞 Miraculous, simplesmente!",
+    "✨ Até os maiores heróis precisam acreditar em si mesmos.",
+    "🐈‍⬛ A vida fica mais divertida quando temos coragem de ser quem somos.",
+    "🎨 Sua imaginação é o limite!",
+    "❤️ Que sua próxima temporada seja a melhor de todas!"
+];
 
+let aberto = false;
+
+function abrirSurpresa() {
+
+    if (aberto) return;
+    aberto = true;
+
+    document.getElementById("surpresa").style.display = "block";
     document.querySelector("button").style.display = "none";
 
-    soltarConfetes();
+    chuvaDeConfetes();
+    mostrarFrases();
 }
 
-// CONFETES
-function soltarConfetes() {
-    for (let i = 0; i < 80; i++) {
-        let confete = document.createElement("div");
+// FRASES APARECENDO EM DIFERENTES LUGARES
 
-        confete.className = "decoracao";
+function mostrarFrases() {
 
-        let emojis = ["❤️", "🐞", "✨", "🎨", "🎉", "⭐"];
+    frases.forEach((texto, index) => {
 
-        confete.innerHTML = emojis[
-            Math.floor(Math.random() * emojis.length)
-        ];
+        setTimeout(() => {
 
-        confete.style.left = Math.random() * 100 + "vw";
-        confete.style.animationDuration =
+            let frase = document.createElement("div");
+            frase.className = "frase";
+            frase.innerText = texto;
+
+            frase.style.left =
+                Math.random() * 65 + 10 + "vw";
+
+            frase.style.top =
+                Math.random() * 65 + 10 + "vh";
+
+            document.body.appendChild(frase);
+
+            setTimeout(() => frase.remove(), 4200);
+
+        }, index * 1200);
+
+    });
+
+}
+
+// CHUVA DE EMOJIS
+
+function chuvaDeConfetes() {
+
+    let emojis = ["❤️", "🐞", "✨", "🎨", "🎉", "⭐", "🐈‍⬛"];
+
+    for (let i = 0; i < 100; i++) {
+
+        let item = document.createElement("div");
+
+        item.className = "decoracao";
+
+        item.innerText =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        item.style.left = Math.random() * 100 + "vw";
+
+        item.style.animationDuration =
             (3 + Math.random() * 5) + "s";
 
-        confete.style.animationDelay =
-            Math.random() * 3 + "s";
+        item.style.animationDelay =
+            Math.random() * 2 + "s";
 
-        document.body.appendChild(confete);
+        document.body.appendChild(item);
 
-        setTimeout(() => confete.remove(), 9000);
+        setTimeout(() => item.remove(), 10000);
     }
 }
 
-// CORAÇÕES FLUTUANTES
+// CORAÇÕES SUBINDO CONTINUAMENTE
+
 setInterval(() => {
+
     let coracao = document.createElement("div");
 
     coracao.className = "coracao";
-    coracao.innerHTML = "❤️";
+    coracao.innerText = "❤️";
 
     coracao.style.left = Math.random() * 100 + "vw";
-    coracao.style.bottom = "-30px";
-    coracao.style.fontSize = (15 + Math.random() * 25) + "px";
+
+    coracao.style.fontSize =
+        (15 + Math.random() * 25) + "px";
 
     document.body.appendChild(coracao);
 
