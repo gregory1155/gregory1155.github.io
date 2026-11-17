@@ -4,18 +4,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#180713">
-<title>Uma aventura chamada Pedro Jânio ❤️</title>
+<title>Um universo chamado Ludymilla 💛</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 :root {
-  --red: #ed2549;
-  --pink: #ff8ca7;
-  --gold: #f5d68a;
-  --dark: #170914;
-  --white: #fff5f7;
+  --yellow: #ffd84d;
+  --gold: #f3b923;
+  --cream: #fff9e8;
+  --brown: #65451f;
+  --dark: #3e2d17;
 }
 
 * {
@@ -24,21 +23,17 @@
   box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
-
 body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--dark);
+  background: linear-gradient(135deg, #fff9e8, #ffe89a, #fff4ce);
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse at 50% 0%, #70203b 0%, transparent 55%),
-    linear-gradient(150deg, #100711, #300d22, #170914);
-  color: var(--white);
-  font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
 
-button { font-family: inherit; }
-
-/* FUNDO */
+button {
+  font-family: inherit;
+}
 
 #stars {
   position: fixed;
@@ -50,496 +45,284 @@ button { font-family: inherit; }
 
 .star {
   position: absolute;
-  color: #fff1d0;
-  animation: twinkle 3s infinite alternate;
+  color: #e5ad25;
+  animation: twinkle 3s infinite ease-in-out;
+  opacity: .45;
 }
 
 @keyframes twinkle {
-  from { opacity: .15; transform: scale(.6); }
-  to { opacity: 1; transform: scale(1.3); }
+  0%, 100% { opacity: .2; transform: scale(.8); }
+  50% { opacity: .9; transform: scale(1.3); }
 }
-
-.shooting-star {
-  position: fixed;
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, white);
-  transform: rotate(-35deg);
-  animation: shoot 5s linear infinite;
-  opacity: 0;
-  z-index: 0;
-}
-
-@keyframes shoot {
-  0% { transform: translate(0,0) rotate(-35deg); opacity: 0; }
-  10% { opacity: 1; }
-  25% { transform: translate(-300px,250px) rotate(-35deg); opacity: 0; }
-  100% { opacity: 0; }
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(#ffb5c4 2px, transparent 3px);
-  background-size: 70px 70px;
-  opacity: .07;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ELEMENTOS FLUTUANTES */
 
 .floating {
   position: fixed;
   pointer-events: none;
-  z-index: 1;
-  animation: floatAround 7s ease-in-out infinite;
-  opacity: .6;
+  z-index: 0;
+  animation: float 7s ease-in-out infinite;
+  opacity: .65;
 }
 
-@keyframes floatAround {
-  0%,100% { transform: translateY(0) rotate(-10deg); }
-  50% { transform: translateY(-25px) rotate(12deg); }
-}
-
-/* LAYOUT */
-
-.page {
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  z-index: 2;
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-25px) rotate(8deg); }
 }
 
 .screen {
-  min-height: 100vh;
   display: none;
-  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 45px 20px;
   align-items: center;
   justify-content: center;
-  padding: 45px 20px;
+  flex-direction: column;
   text-align: center;
+  animation: appear .8s ease;
 }
 
 .screen.active {
   display: flex;
-  animation: screenEnter 1s ease;
 }
 
-@keyframes screenEnter {
-  from { opacity: 0; transform: translateY(25px); }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.small-label {
-  color: var(--gold);
-  letter-spacing: 5px;
-  font-size: 11px;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
 h1, h2, h3 {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
 }
 
-/* JOANINHA */
-
-.ladybug {
-  width: 95px;
-  height: 95px;
-  border-radius: 50%;
-  background: var(--red);
-  border: 4px solid #160b13;
-  position: relative;
-  margin: 30px auto;
-  box-shadow: 0 0 35px #ff315c99;
-  animation: bugFloat 3s ease-in-out infinite;
-}
-
-.ladybug::before {
-  content: "";
-  position: absolute;
-  width: 38px;
-  height: 38px;
-  background: #171018;
-  border-radius: 50%;
-  left: 25px;
-  top: -12px;
-}
-
-.ladybug::after {
-  content: "●       ●";
-  white-space: pre;
-  color: #160b13;
-  position: absolute;
-  top: 35px;
-  left: 12px;
-  font-size: 22px;
-  line-height: 35px;
-  text-shadow: 38px 0 #160b13;
-}
-
-.bug-wing {
-  position: absolute;
-  width: 3px;
-  height: 90px;
-  background: #160b13;
-  left: 44px;
-  top: 0;
-  transform: rotate(35deg);
-}
-
-@keyframes bugFloat {
-  0%,100% { transform: translateY(0) rotate(-8deg); }
-  50% { transform: translateY(-16px) rotate(8deg); }
-}
-
-/* TELA INICIAL */
-
-.hero-title {
-  font-size: clamp(35px, 8vw, 66px);
-  line-height: 1.2;
-  color: #fff0f3;
-  text-shadow: 0 0 25px #ff315c;
-}
-
-.hero-title span {
-  color: var(--pink);
-  display: block;
-}
-
-.hero-description {
-  max-width: 450px;
-  color: #e8c9d3;
-  line-height: 1.9;
-  margin: 20px auto 30px;
-  font-size: 14px;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  color: var(--gold);
-  margin: 22px auto;
-  justify-content: center;
-}
-
-.divider::before, .divider::after {
-  content: "";
-  height: 1px;
-  width: 60px;
-  background: linear-gradient(90deg, transparent, var(--gold));
-}
-
-.divider::after {
-  transform: rotate(180deg);
-}
-
-.main-button {
-  border: 1px solid #ffb5c4;
-  padding: 16px 30px;
-  border-radius: 50px;
-  background: linear-gradient(135deg, #ff4567, #a90e36);
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 0 30px #ed254966;
-  transition: .35s;
-}
-
-.main-button:hover {
-  transform: translateY(-5px) scale(1.04);
-  box-shadow: 0 0 45px #ff4567;
-}
-
-footer {
-  color: #b997a7;
-  font-size: 10px;
-  letter-spacing: 2px;
-  margin-top: 45px;
-}
-
-/* CARTA */
-
-.letter-container {
-  width: min(100%, 570px);
-  margin: 20px auto;
-}
-
-.envelope {
-  position: relative;
-  width: min(100%, 390px);
-  height: 250px;
-  margin: 30px auto;
-  background: #8c193b;
-  border: 2px solid #f1b5c3;
-  border-radius: 8px;
-  box-shadow: 0 15px 50px #0008;
-  cursor: pointer;
-  perspective: 1000px;
-}
-
-.envelope::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(145deg, transparent 49%, #a9274e 50%),
-    linear-gradient(215deg, transparent 49%, #c0395c 50%);
-  z-index: 2;
-}
-
-.flap {
-  position: absolute;
-  inset: 0;
-  height: 130px;
-  background: #d33b5f;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transform-origin: top;
-  transition: transform 1s;
-  z-index: 4;
-}
-
-.seal {
-  position: absolute;
-  width: 65px;
-  height: 65px;
-  background: radial-gradient(circle, #ff8299, #a30d32);
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  left: 50%;
-  top: 95px;
-  transform: translateX(-50%);
-  z-index: 5;
-  display: grid;
-  place-items: center;
-  font-size: 30px;
-  transition: .5s;
-}
-
-.envelope.open .flap {
-  transform: rotateX(180deg);
-}
-
-.envelope.open .seal {
-  opacity: 0;
-  transform: translateX(-50%) scale(0);
-}
-
-.letter-inside {
-  position: absolute;
-  background: #fff0e6;
-  color: #69213b;
-  width: 85%;
-  height: 195px;
-  top: 25px;
-  left: 7.5%;
-  padding: 25px;
-  border-radius: 5px;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Cinzel', serif;
-  transition: transform 1s;
-}
-
-.envelope.open .letter-inside {
-  transform: translateY(-130px);
-}
-
-.envelope-hint {
-  color: var(--gold);
-  font-size: 13px;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  50% { opacity: .4; }
-}
-
-/* CARTA ABERTA */
-
-.letter-paper {
-  display: none;
-  position: relative;
-  width: min(100%, 650px);
-  margin: 35px auto;
-  padding: 35px 25px;
-  border: 1px solid #f1c4ad;
-  border-radius: 5px;
-  background:
-    radial-gradient(circle at top right, #ffe5d5, transparent 40%),
-    #fff3e9;
-  color: #58233b;
-  box-shadow: 0 20px 60px #0008;
-  animation: paperOpen 1s ease;
-}
-
-@keyframes paperOpen {
-  from { opacity: 0; transform: translateY(50px) scale(.9); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.letter-paper h2 {
-  color: #a9163c;
-  font-size: 25px;
-  margin-bottom: 22px;
-}
-
-.letter-paper p {
-  font-size: 14px;
-  line-height: 2;
-  text-align: left;
-  white-space: pre-wrap;
-}
-
-.letter-signature {
-  text-align: right !important;
-  margin-top: 25px;
-  color: #b0214a;
-  font-family: 'Cinzel', serif;
-}
-
-/* FRASES ESPECIAIS */
-
-.quotes-section {
-  width: min(100%, 650px);
-  margin: 40px auto;
-}
-
-.quotes-section h2 {
-  font-size: 25px;
-  color: var(--gold);
-  margin-bottom: 25px;
-}
-
-.quote-card {
-  padding: 19px;
-  margin: 13px 0;
-  background: linear-gradient(120deg, #55162eaa, #8c244288);
-  border: 1px solid #f58ba7;
-  border-radius: 15px;
-  box-shadow: 0 0 18px #ff547533;
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: 1s;
-  color: #fff1f5;
-  font-size: 14px;
-}
-
-.quote-card.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.quote-card span {
-  display: block;
-  font-size: 26px;
-  margin-bottom: 8px;
-}
-
-/* CANTINHO ARTISTA */
-
-.artist-section {
-  width: min(100%, 600px);
-  margin: 35px auto;
-  padding: 25px;
-  border: 1px solid #d69cba;
-  border-radius: 20px;
-  background: #31132799;
-}
-
-.artist-icons {
-  font-size: 35px;
-  letter-spacing: 12px;
-  margin: 20px 0;
-  animation: artistFloat 3s infinite alternate;
-}
-
-@keyframes artistFloat {
-  to { transform: translateY(-10px) rotate(3deg); }
-}
-
-.artist-section h2 {
-  color: #ffb5c8;
+h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: #9a6810;
   margin-bottom: 15px;
 }
 
-.artist-section p {
-  color: #ead1db;
-  font-size: 14px;
-  line-height: 1.9;
+h2 {
+  font-size: clamp(2rem, 6vw, 3.3rem);
+  color: #93600d;
+  margin-bottom: 18px;
 }
 
-/* FINAL */
-
-.final-title {
-  font-size: clamp(32px, 8vw, 58px);
-  color: #ff9bb2;
-  text-shadow: 0 0 30px #ff315c;
-  margin: 25px 0;
+h3 {
+  color: #9a6810;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
 }
 
-.final-heart {
-  font-size: 80px;
-  animation: heartbeat 1.3s infinite;
+p {
+  line-height: 1.8;
 }
 
-@keyframes heartbeat {
-  0%,100% { transform: scale(1); }
-  20% { transform: scale(1.2); }
-  40% { transform: scale(1); }
-  60% { transform: scale(1.12); }
+.subtitle {
+  font-size: 1.1rem;
+  max-width: 650px;
+  margin: 0 auto 25px;
 }
 
-/* CONFETES */
-
-.confetti {
-  position: fixed;
-  top: -30px;
-  z-index: 20;
-  pointer-events: none;
-  animation: confettiFall linear forwards;
-}
-
-@keyframes confettiFall {
-  to {
-    transform: translateY(110vh) rotate(900deg);
-    opacity: 0;
-  }
-}
-
-/* BOTÕES DE NAVEGAÇÃO */
-
-.nav-button {
-  margin: 20px 5px;
-  padding: 13px 23px;
-  border-radius: 30px;
-  border: 1px solid #f6a1b6;
-  background: #5c1835;
-  color: white;
+.btn {
+  border: none;
+  border-radius: 35px;
+  padding: 14px 27px;
+  background: linear-gradient(135deg, #ffda55, #f1b72a);
+  color: #593d0c;
+  font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
+  box-shadow: 0 7px 20px #bd8b2c40;
   transition: .3s;
+  margin: 8px;
 }
 
-.nav-button:hover {
-  background: #a9234a;
-  transform: scale(1.05);
+.btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 12px 25px #bd8b2c55;
 }
 
-.hidden { display: none !important; }
+.card {
+  width: min(720px, 94%);
+  padding: 35px;
+  border: 1px solid #fff1b9;
+  border-radius: 28px;
+  background: #fffdf3e8;
+  box-shadow: 0 15px 45px #9b741d20;
+  backdrop-filter: blur(10px);
+  margin: 15px auto;
+}
 
-@media(max-width: 480px) {
-  .screen { padding: 35px 15px; }
-  .letter-paper { padding: 25px 18px; }
-  .letter-paper p { font-size: 13px; }
-  .envelope { height: 220px; }
+.big-emoji {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: bounce 3s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.small-note {
+  font-size: .9rem;
+  opacity: .7;
+  margin-top: 18px;
+}
+
+/* Envelope */
+.envelope {
+  width: 230px;
+  height: 155px;
+  position: relative;
+  margin: 35px auto;
+  background: #f1c65b;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 12px 25px #8e641d35;
+  transition: .4s;
+}
+
+.envelope:hover {
+  transform: translateY(-7px);
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 115px solid transparent;
+  border-right: 115px solid transparent;
+  border-top: 90px solid #e9b842;
+  transform-origin: top;
+  transition: .7s;
+  z-index: 3;
+}
+
+.envelope.open:before {
+  transform: rotateX(180deg);
+}
+
+.envelope:after {
+  content: "💛";
+  position: absolute;
+  top: 65px;
+  left: 95px;
+  font-size: 35px;
+  z-index: 4;
+}
+
+.envelope-letter {
+  position: absolute;
+  width: 190px;
+  height: 125px;
+  background: #fffdf4;
+  left: 20px;
+  top: 15px;
+  border-radius: 5px;
+  transition: .7s;
+  z-index: 2;
+}
+
+.envelope.open .envelope-letter {
+  transform: translateY(-95px);
+}
+
+/* Letter */
+.letter {
+  text-align: left;
+  max-width: 700px;
+  margin: auto;
+  background: #fffdf6;
+  border: 1px solid #f4d98b;
+  border-radius: 20px;
+  padding: clamp(22px, 5vw, 42px);
+  box-shadow: 0 12px 35px #9b741d20;
+}
+
+.letter p {
+  margin-bottom: 17px;
+  font-size: 1.02rem;
+}
+
+.letter .signature {
+  text-align: center;
+  color: #a16e0c;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 25px;
+}
+
+.typewriter {
+  white-space: pre-line;
+}
+
+/* Interest sections */
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: min(950px, 95%);
+  margin: 25px auto;
+}
+
+.interest {
+  background: #fffdf4;
+  border-radius: 22px;
+  padding: 25px 20px;
+  border: 1px solid #f6df9c;
+  box-shadow: 0 8px 25px #9b741d18;
+  transition: .35s;
+}
+
+.interest:hover {
+  transform: translateY(-8px) rotate(-1deg);
+}
+
+.interest .emoji {
+  font-size: 3.3rem;
+  margin-bottom: 15px;
+}
+
+/* Phrase cards */
+.phrase-card {
+  background: #fffdf5;
+  border: 1px solid #f3d88d;
+  border-radius: 20px;
+  padding: 28px;
+  width: min(550px, 92%);
+  min-height: 145px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  box-shadow: 0 10px 30px #9b741d18;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: #8c5d0e;
+  animation: appear .5s ease;
+}
+
+.final-message {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  line-height: 1.7;
+  color: #8c5d0e;
+  max-width: 750px;
+  margin: 20px auto;
+}
+
+footer {
+  padding: 25px;
+  color: #8a681e;
+  font-size: .9rem;
+}
+
+@media(max-width: 600px) {
+  .card { padding: 24px 18px; }
+  .screen { padding: 30px 12px; }
+  .letter p { font-size: .96rem; }
+  .interest-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -548,463 +331,359 @@ footer {
 
 <div id="stars"></div>
 
-<div class="floating" style="top:12%;left:6%;font-size:30px">🐞</div>
-<div class="floating" style="top:25%;right:7%;font-size:25px;animation-delay:1s">✨</div>
-<div class="floating" style="bottom:15%;left:8%;font-size:25px;animation-delay:2s">❤️</div>
-<div class="shooting-star" style="top:20%;right:0"></div>
+<div class="floating" style="top:12%;left:7%;font-size:30px">🌼</div>
+<div class="floating" style="top:72%;right:8%;font-size:27px;animation-delay:1s">✨</div>
+<div class="floating" style="top:45%;right:5%;font-size:24px;animation-delay:2s">💛</div>
+<div class="floating" style="bottom:8%;left:8%;font-size:27px;animation-delay:3s">🌻</div>
 
-<main class="page">
-
-<!-- TELA 1: ENTRADA -->
-
-<section class="screen active" id="home">
-
-  <div class="small-label">Uma edição especial • 2026</div>
-
-  <div class="ladybug">
-    <div class="bug-wing"></div>
-  </div>
-
-  <h1 class="hero-title">
-    Uma aventura
-    <span>chamada Pedro Jânio</span>
-  </h1>
-
-  <div class="divider">✦ 🐞 ✦</div>
-
-  <p class="hero-description">
-    Algumas pessoas são como estrelas: deixam tudo mais especial
-    simplesmente por existirem. Hoje, toda a magia é dedicada a você!
+<!-- ABERTURA -->
+<section class="screen active" id="inicio">
+  <div class="big-emoji">🌻</div>
+  <h1>Um universo chamado Ludymilla</h1>
+  <p class="subtitle">
+    Existe uma pessoa que merece uma homenagem especial.
+    E hoje, esse pequeno universo foi feito especialmente para ela. 💛
   </p>
-
-  <button class="main-button" onclick="goTo('invitation')">
-    ✨ COMEÇAR ESTA AVENTURA ✨
+  <button class="btn" onclick="goTo('boasvindas')">
+    Entrar nesse universo ✨
   </button>
-
-  <footer>
-    UM DIA ESPECIAL • UMA PESSOA ESPECIAL
-  </footer>
-
+  <p class="small-note">Feito com carinho especialmente para Ludymilla</p>
 </section>
 
-
-<!-- TELA 2: CONVITE -->
-
-<section class="screen" id="invitation">
-
-  <div class="small-label">Uma mensagem chegou para você</div>
-
-  <h1 class="hero-title">
-    Ei, Pedro! ❤️
-  </h1>
-
-  <div class="divider">✦</div>
-
-  <p class="hero-description">
-    Parece que uma missão especial apareceu em Paris...
-    Mas desta vez, a missão é muito mais importante:
-    celebrar alguém incrível!
-  </p>
-
-  <div style="font-size:60px;margin:20px">🐞 💌 🐈‍⬛</div>
-
-  <p style="color:#ffd4df;margin-bottom:25px">
-    Você está preparado para descobrir sua surpresa?
-  </p>
-
-  <button class="main-button" onclick="goTo('envelope')">
-    SIM! QUERO DESCOBRIR! ❤️
-  </button>
-
-  <button class="nav-button" onclick="goTo('home')">
-    Voltar
-  </button>
-
-</section>
-
-
-<!-- TELA 3: ENVELOPE -->
-
-<section class="screen" id="envelope">
-
-  <div class="small-label">Correspondência especial</div>
-
-  <h1 style="color:#ff9bb2;font-size:32px">
-    Uma carta para você...
-  </h1>
-
-  <p class="hero-description">
-    Existe algo que foi preparado especialmente para este dia.
-    Abra o envelope para descobrir!
-  </p>
-
-  <div class="letter-container">
-
-    <div class="envelope" id="envelopeBox" onclick="openLetter()">
-
-      <div class="letter-inside">
-        <span style="font-size:28px">❤️</span>
-        <strong>Para Pedro Jânio</strong>
-        <small style="margin-top:10px">Com carinho...</small>
-      </div>
-
-      <div class="flap"></div>
-      <div class="seal">🐞</div>
-
-    </div>
-
-  </div>
-
-  <p class="envelope-hint" id="envelopeHint">
-    ✨ TOQUE NO ENVELOPE PARA ABRIR ✨
-  </p>
-
-  <button class="nav-button" onclick="goTo('invitation')">
-    Voltar
-  </button>
-
-</section>
-
-
-<!-- TELA 4: CARTA -->
-
-<section class="screen" id="letter">
-
-  <div class="small-label">Uma homenagem especial</div>
-
-  <div class="letter-paper" id="paper">
-
-    <h2>🎂 Feliz aniversário, Pedro Jânio!</h2>
-
-    <p id="letterText"></p>
-
-    <p class="letter-signature">
-      Com carinho! ❤️🐞
+<!-- BOAS-VINDAS -->
+<section class="screen" id="boasvindas">
+  <div class="card">
+    <div class="big-emoji">💛✨</div>
+    <h2>Oi, Ludymilla!</h2>
+    <p class="subtitle">
+      Preparei cada cantinho deste site pensando em você.
+      Tem carinho, lembranças, algumas das coisas que você gosta
+      e uma mensagem que eu queria muito te entregar.
     </p>
-
+    <button class="btn" onclick="goTo('envelope')">
+      Tem uma cartinha para você 💌
+    </button>
   </div>
-
-  <button class="main-button" onclick="goTo('quotes')">
-    DESCOBRIR MAIS SURPRESAS ✨
-  </button>
-
 </section>
 
+<!-- ENVELOPE -->
+<section class="screen" id="envelope">
+  <h2>Uma cartinha especial</h2>
+  <p class="subtitle">Toque no envelope para descobrir o que preparei.</p>
 
-<!-- TELA 5: FRASES -->
-
-<section class="screen" id="quotes">
-
-  <div class="small-label">O universo de Miraculous</div>
-
-  <h1 style="color:#ff9bb2;font-size:32px">
-    Pequenas mensagens,
-    <br>grandes significados.
-  </h1>
-
-  <p class="hero-description">
-    Algumas palavras para deixar seu dia ainda mais especial!
-  </p>
-
-  <div class="quotes-section">
-
-    <div class="quote-card">
-      <span>🐞</span>
-      "Miraculous, simplesmente!"
-    </div>
-
-    <div class="quote-card">
-      <span>✨</span>
-      "Até os maiores heróis precisam acreditar em si mesmos."
-    </div>
-
-    <div class="quote-card">
-      <span>🐈‍⬛</span>
-      "A vida fica mais divertida quando temos coragem de ser quem somos."
-    </div>
-
-    <div class="quote-card">
-      <span>🎨</span>
-      "Sua imaginação é o limite!"
-    </div>
-
-    <div class="quote-card">
-      <span>❤️</span>
-      "Que sua próxima temporada seja a melhor de todas!"
-    </div>
-
+  <div class="envelope" id="envelopeBox" onclick="openLetter()">
+    <div class="envelope-letter"></div>
   </div>
 
-  <button class="main-button" onclick="goTo('artist')">
-    CONTINUAR A AVENTURA 🎨
+  <p id="envelopeText">Clique no envelope 💌</p>
+  <button class="btn" id="letterButton" style="display:none"
+    onclick="goTo('carta')">
+    Ler minha mensagem 💛
   </button>
-
 </section>
 
+<!-- CARTA -->
+<section class="screen" id="carta">
+  <h2>Para você, Ludymilla 💛</h2>
 
-<!-- TELA 6: ARTISTA -->
-
-<section class="screen" id="artist">
-
-  <div class="small-label">Um talento especial</div>
-
-  <h1 style="font-size:35px;color:#ff9bb2">
-    O artista por trás da magia!
-  </h1>
-
-  <div class="artist-section">
-
-    <div class="artist-icons">
-      ✏️ 🎨 🖌️
-    </div>
-
-    <h2>Continue criando!</h2>
+  <div class="letter">
+    <p><strong>Ludymilla,</strong></p>
 
     <p>
-      Que nunca faltem ideias para colocar no papel,
-      histórias para desenhar e mundos para imaginar.
-
-      Cada desenho é uma pequena parte de você,
-      uma maneira de mostrar ao mundo como sua
-      imaginação é incrível.
-
-      Nunca deixe de explorar sua criatividade.
-      O próximo grande desenho pode ser o começo
-      de uma história extraordinária!
+      Quero te desejar tudo de melhor que a vida pode oferecer,
+      porque você merece conquistar coisas incríveis e realizar
+      todos os seus sonhos.
     </p>
 
+    <p>
+      Você é uma amiga muito especial, com seu jeitinho único,
+      suas manias e até seus defeitos. Ninguém é perfeito, mas são
+      justamente essas características que tornam cada pessoa
+      especial. Admiro você não apenas como amiga, mas também como
+      pessoa, e tenho certeza de que será uma ótima profissional
+      no futuro.
+    </p>
+
+    <p>
+      Espero que esses três anos que ainda temos pela frente sejam
+      cheios de momentos bons, risadas e histórias para guardar.
+      Mesmo que existam algumas brigas ou desentendimentos, espero
+      que nossa amizade seja sempre maior do que qualquer diferença.
+    </p>
+
+    <p>
+      Que a gente continue crescendo juntas, aprendendo uma com a
+      outra e construindo uma amizade verdadeira, daquelas que
+      ficam na memória.
+    </p>
+
+    <p>
+      Obrigada por ser essa amiga maravilhosa. Nunca deixe de
+      acreditar em si mesma e nos seus sonhos. Você merece tudo
+      de bom! 💛🌻
+    </p>
+
+    <p class="signature">
+      Com carinho! 💛
+    </p>
   </div>
 
-  <div style="font-size:45px;margin:20px">
-    🐞 ✨ 🐈‍⬛
-  </div>
-
-  <button class="main-button" onclick="goTo('final')">
-    VER A ÚLTIMA SURPRESA ❤️
+  <button class="btn" onclick="goTo('frase')">
+    Continuar ✨
   </button>
-
 </section>
 
+<!-- FRASE DE ENCERRAMENTO DA CARTA -->
+<section class="screen" id="frase">
+  <div class="card">
+    <div class="big-emoji">🌻</div>
+    <p class="final-message">
+      "Algumas pessoas tornam a caminhada muito mais especial.
+      Você é uma delas, Ludymilla! Que ainda tenhamos muitas
+      histórias para viver e lembrar juntas." 💛
+    </p>
+    <button class="btn" onclick="goTo('ariana')">
+      Tem mais uma surpresa! 🎁
+    </button>
+  </div>
+</section>
 
-<!-- TELA 7: FINAL -->
+<!-- ARIANA GRANDE -->
+<section class="screen" id="ariana">
+  <h2>Um pouquinho do seu universo 🎤</h2>
 
+  <div class="card">
+    <div class="big-emoji">🎀🎶</div>
+    <h3>Ariana Grande</h3>
+    <p>
+      Porque uma homenagem para você também precisa ter um espaço
+      para uma das suas artistas favoritas!
+      Que nunca faltem músicas, momentos especiais e motivos
+      para cantar junto. 💗
+    </p>
+  </div>
+
+  <button class="btn" onclick="goTo('snoopy')">Próxima surpresa 🐾</button>
+</section>
+
+<!-- SNOOPY -->
+<section class="screen" id="snoopy">
+  <h2>Um cantinho fofinho 🐶</h2>
+
+  <div class="interest-grid">
+    <div class="interest">
+      <div class="emoji">🐶</div>
+      <h3>Snoopy</h3>
+      <p>
+        Um personagem cheio de personalidade, charme e momentos
+        divertidos. Não poderia faltar por aqui!
+      </p>
+    </div>
+
+    <div class="interest">
+      <div class="emoji">🐤</div>
+      <h3>Woodstock</h3>
+      <p>
+        Pequeno, especial e sempre ao lado do Snoopy.
+        Uma dupla que merece seu próprio espaço nesta homenagem.
+      </p>
+    </div>
+
+    <div class="interest">
+      <div class="emoji">🤎</div>
+      <h3>Charlie Brown</h3>
+      <p>
+        Mais um personagem querido para completar esse cantinho
+        cheio de carinho e nostalgia.
+      </p>
+    </div>
+  </div>
+
+  <button class="btn" onclick="goTo('cbjr')">
+    Continuar 🎵
+  </button>
+</section>
+
+<!-- CHARLIE BROWN JR -->
+<section class="screen" id="cbjr">
+  <div class="card">
+    <div class="big-emoji">🎸🎧</div>
+    <h2>Charlie Brown Jr.</h2>
+    <p class="subtitle">
+      E claro que também precisava ter um espaço para Charlie Brown Jr.
+      Que a música continue fazendo parte dos seus momentos,
+      das suas lembranças e da sua história!
+    </p>
+  </div>
+
+  <button class="btn" onclick="goTo('amizade')">
+    Mais uma mensagem 💛
+  </button>
+</section>
+
+<!-- AMIZADE -->
+<section class="screen" id="amizade">
+  <h2>Uma amizade para guardar 🌻</h2>
+
+  <div class="card">
+    <div class="big-emoji">👭💛</div>
+    <p class="subtitle">
+      Nem toda amizade precisa ser perfeita para ser especial.
+      O que importa são as lembranças, o companheirismo,
+      as conversas, as risadas e a vontade de continuar
+      compartilhando a caminhada.
+    </p>
+    <p class="subtitle">
+      Que os próximos três anos tragam muitas histórias
+      e momentos que a gente ainda vai lembrar com carinho.
+    </p>
+  </div>
+
+  <button class="btn" onclick="goTo('frases')">
+    Algumas palavras para você ✨
+  </button>
+</section>
+
+<!-- CARTÕES DE FRASES -->
+<section class="screen" id="frases">
+  <h2>Pequenos lembretes para você 💌</h2>
+
+  <div class="phrase-card" id="phraseCard">
+    Você merece viver coisas incríveis! 💛
+  </div>
+
+  <button class="btn" onclick="nextPhrase()">
+    Outra frase 🌼
+  </button>
+
+  <button class="btn" onclick="goTo('final')">
+    Chegamos ao final 🎁
+  </button>
+</section>
+
+<!-- FINAL -->
 <section class="screen" id="final">
+  <div class="big-emoji">🌻💛✨</div>
+  <h1>Para sempre especial!</h1>
 
-  <div class="small-label">Missão concluída!</div>
-
-  <div class="final-heart">❤️</div>
-
-  <h1 class="final-title">
-    FELIZ ANIVERSÁRIO!
-  </h1>
-
-  <div class="divider">🐞 ✨ 🐈‍⬛</div>
-
-  <h2 style="color:#f5d68a;font-size:24px;margin-bottom:20px">
-    Pedro Jânio
-  </h2>
-
-  <p class="hero-description">
-    Que sua vida seja cheia de cores, desenhos,
-    aventuras, amizades e momentos inesquecíveis.
-
-    Nunca deixe de ser você!
-    Este é apenas o começo de uma nova temporada
-    cheia de possibilidades.
+  <p class="final-message">
+    Ludymilla, espero que você tenha gostado dessa pequena
+    homenagem. Que sua vida seja cheia de conquistas,
+    alegrias, amizades verdadeiras e sonhos realizados.
   </p>
 
-  <p style="color:#ffb5c8;font-family:'Cinzel';margin:20px">
-    "Sua história merece ser extraordinária."
+  <p class="final-message">
+    Obrigada por fazer parte dessa caminhada.
+    Ainda temos muitas histórias para viver! 💛
   </p>
 
-  <button class="main-button" onclick="celebrate()">
-    🎉 COMEMORAR MAIS UMA VEZ!
+  <button class="btn" onclick="celebrate()">
+    Uma última surpresa! 🎉
   </button>
 
-  <footer>
-    FEITO ESPECIALMENTE PARA PEDRO JÂNIO ❤️
-  </footer>
-
+  <p class="small-note">Feito com carinho para Ludymilla 💛</p>
+  <footer>🌻 Um universo inteiro de carinho 🌻</footer>
 </section>
-
-</main>
-
 
 <script>
-
-// CRIAÇÃO DAS ESTRELAS
-
+// Estrelas do fundo
 const stars = document.getElementById('stars');
 
-for(let i = 0; i < 90; i++) {
-  const star = document.createElement('div');
+for (let i = 0; i < 55; i++) {
+  const star = document.createElement('span');
   star.className = 'star';
-  star.innerHTML = Math.random() > .5 ? '✦' : '·';
-
+  star.textContent = Math.random() > .5 ? '✦' : '·';
   star.style.left = Math.random() * 100 + '%';
   star.style.top = Math.random() * 100 + '%';
-  star.style.fontSize = (8 + Math.random() * 15) + 'px';
+  star.style.fontSize = (10 + Math.random() * 18) + 'px';
   star.style.animationDelay = Math.random() * 4 + 's';
-
   stars.appendChild(star);
 }
 
-
-// NAVEGAÇÃO ENTRE TELAS
-
+// Navegação entre as telas
 function goTo(id) {
-
   document.querySelectorAll('.screen').forEach(screen => {
     screen.classList.remove('active');
   });
 
   document.getElementById(id).classList.add('active');
-
-  window.scrollTo({top:0, behavior:'smooth'});
-
-  if(id === 'quotes') {
-    showQuotes();
-  }
-
-  if(id === 'final') {
-    celebrate();
-  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-
-// ANIMAÇÃO DO ENVELOPE
-
-let letterOpened = false;
+// Abrir envelope
+let envelopeOpened = false;
 
 function openLetter() {
+  if (envelopeOpened) return;
 
-  if(letterOpened) return;
-
-  letterOpened = true;
-
+  envelopeOpened = true;
   document.getElementById('envelopeBox').classList.add('open');
-
-  document.getElementById('envelopeHint').innerText =
-    '💌 SUA CARTA ESTÁ SENDO ABERTA...';
+  document.getElementById('envelopeText').textContent =
+    'Uma mensagem feita especialmente para você! 💛';
 
   setTimeout(() => {
-
-    document.getElementById('paper').style.display = 'block';
-
-    goTo('letter');
-
-    typeMessage();
-
-    celebrate();
-
-  }, 1400);
+    document.getElementById('letterButton').style.display = 'inline-block';
+  }, 700);
 }
 
+// Frases interativas
+const phrases = [
+  'Você merece viver coisas incríveis! 💛',
+  'Nunca duvide da pessoa especial que você é! 🌻',
+  'Que seus sonhos encontrem muitos caminhos para acontecer! ✨',
+  'Que nunca faltem motivos para sorrir! 🌼',
+  'Nossa amizade ainda tem muitas histórias pela frente! 💌',
+  'Continue sendo essa pessoa única e maravilhosa! 💛'
+];
 
-// TEXTO PERSONALIZADO
+let phraseIndex = 0;
 
-const message = `Hoje é o seu dia, e eu não poderia deixar passar sem te desejar tudo de melhor que a vida pode oferecer!
+function nextPhrase() {
+  phraseIndex = (phraseIndex + 1) % phrases.length;
 
-Que essa nova fase seja repleta de felicidade, conquistas, momentos inesquecíveis e muita inspiração para continuar fazendo aquilo que você ama. Nunca deixe de desenhar, criar e transformar sua imaginação em algo extraordinário. Afinal, o mundo precisa de mais pessoas que enxergam beleza nos pequenos detalhes! 🎨
-
-Que você tenha a coragem da Ladybug, a confiança do Cat Noir e a criatividade necessária para desenhar os seus próprios caminhos.
-
-Lembre-se: sua história ainda está sendo escrita, e você é o protagonista dela. Não deixe ninguém apagar as cores do seu mundo!
-
-Espero que nunca faltem motivos para sorrir, sonhos para realizar e aventuras para viver.
-
-Que seu próximo ano seja tão incrível que até o Mestre Fu ficaria orgulhoso!
-
-Feliz aniversário! Continue sendo essa pessoa única, criativa e especial. Nunca perca sua essência! 🐞🎨✨`;
-
-let typingStarted = false;
-
-function typeMessage() {
-
-  if(typingStarted) return;
-
-  typingStarted = true;
-
-  const element = document.getElementById('letterText');
-
-  let index = 0;
-
-  function write() {
-
-    if(index < message.length) {
-
-      element.textContent += message.charAt(index);
-
-      index++;
-
-      setTimeout(write, 22);
-
-    }
-
-  }
-
-  write();
+  const card = document.getElementById('phraseCard');
+  card.style.animation = 'none';
+  void card.offsetWidth;
+  card.style.animation = 'appear .5s ease';
+  card.textContent = phrases[phraseIndex];
 }
 
-
-// FRASES APARECENDO GRADUALMENTE
-
-let quotesStarted = false;
-
-function showQuotes() {
-
-  if(quotesStarted) return;
-
-  quotesStarted = true;
-
-  const cards = document.querySelectorAll('.quote-card');
-
-  cards.forEach((card, index) => {
-
-    setTimeout(() => {
-      card.classList.add('show');
-    }, 700 * (index + 1));
-
-  });
-}
-
-
-// CHUVA DE CONFETES
-
+// Chuva de emojis
 function celebrate() {
+  const emojis = ['💛', '🌻', '✨', '🌼', '💌', '🎀', '⭐'];
 
-  const emojis = ['❤️','🐞','✨','🎨','🎉','⭐','💗','🐈‍⬛'];
+  for (let i = 0; i < 65; i++) {
+    const item = document.createElement('div');
 
-  for(let i = 0; i < 110; i++) {
+    item.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    item.style.position = 'fixed';
+    item.style.left = Math.random() * 100 + 'vw';
+    item.style.top = '-40px';
+    item.style.fontSize = (18 + Math.random() * 22) + 'px';
+    item.style.zIndex = '9999';
+    item.style.pointerEvents = 'none';
 
-    const confetti = document.createElement('div');
+    document.body.appendChild(item);
 
-    confetti.className = 'confetti';
+    const duration = 2500 + Math.random() * 2500;
+    const drift = (Math.random() - .5) * 180;
 
-    confetti.textContent =
-      emojis[Math.floor(Math.random() * emojis.length)];
+    item.animate([
+      { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+      {
+        transform: `translate(${drift}px, 110vh) rotate(600deg)`,
+        opacity: .2
+      }
+    ], {
+      duration: duration,
+      easing: 'ease-in',
+      fill: 'forwards'
+    });
 
-    confetti.style.left = Math.random() * 100 + 'vw';
-
-    confetti.style.fontSize =
-      (15 + Math.random() * 20) + 'px';
-
-    confetti.style.animationDuration =
-      (3 + Math.random() * 5) + 's';
-
-    confetti.style.animationDelay =
-      Math.random() * 2 + 's';
-
-    document.body.appendChild(confetti);
-
-    setTimeout(() => confetti.remove(), 10000);
-
+    setTimeout(() => item.remove(), duration);
   }
-
 }
-
 </script>
 
 </body>
-      </html>
-      
+</html>
